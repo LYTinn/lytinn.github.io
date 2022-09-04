@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-09-03T01:52:12.452Z</updated>
+  <updated>2022-09-04T01:05:42.719Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Neuron Layers</title>
+    <link href="http://example.com/2022/09/04/Neuron-Layers/"/>
+    <id>http://example.com/2022/09/04/Neuron-Layers/</id>
+    <published>2022-09-04T01:00:58.000Z</published>
+    <updated>2022-09-04T01:05:42.719Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Neuron-Layers"><a href="#Neuron-Layers" class="headerlink" title="Neuron Layers"></a>Neuron Layers</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Neuron-Layers&quot;&gt;&lt;a href=&quot;#Neuron-Layers&quot; class=&quot;headerlink&quot; title=&quot;Neuron Layers&quot;&gt;&lt;/a&gt;Neuron Layers&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    <category term="Deep Learning" scheme="http://example.com/categories/Deep-Learning/"/>
+    
+    
+    <category term="Deep Learning" scheme="http://example.com/tags/Deep-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

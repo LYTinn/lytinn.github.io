@@ -3,26 +3,17 @@
   <entry>
     <title>Neuron Layers</title>
     <url>/2022/09/04/Neuron-Layers/</url>
-    <content><![CDATA[<h1 id="Neuron-Layers"><a href="#Neuron-Layers" class="headerlink" title="Neuron Layers"></a>Neuron Layers</h1>]]></content>
+    <content><![CDATA[<h1 id="Neuron-Layers"><a href="#Neuron-Layers" class="headerlink" title="Neuron Layers"></a>Neuron Layers</h1><h2 id="Weight-matrix-of-a-layer"><a href="#Weight-matrix-of-a-layer" class="headerlink" title="Weight matrix of a layer"></a>Weight matrix of a layer</h2><p>Consider a layer of K neurons:<br><img src="../figures/K%20neurons.png" alt="K neurons"></p>
+<p>Let $\mathbf{W_k}$ and $b_k$ denote the weight vector and bias of $k$ th neuron. Weights connected to a neuron layer is represented by a weight matrix $\mathbf{W}$ where the columns are given by weight vectors of individual neurons:</p>
+<script type="math/tex; mode=display">\mathbf{W} = (\mathbf{w_1}\quad\mathbf{w_2}\quad\dots\quad\mathbf{w_k})</script><p>and a bias vector $\mathbf{b}$ where each element corresponds to a bias of a neuron:</p>
+<script type="math/tex; mode=display">\mathbf{b} = (b_1, b_2, \dots, b_K)^T</script><h2 id="Synaptic-input-at-a-layer-for-single-input"><a href="#Synaptic-input-at-a-layer-for-single-input" class="headerlink" title="Synaptic input at a layer for single input"></a>Synaptic input at a layer for single input</h2><p>Given an input pattern $x\in \mathbb{R}^n$ to a layer of $K$ neurons. The synaptic input $u_k$ to $k$ th neuron is:</p>
+<script type="math/tex; mode=display">u_k = \mathbf{w}_k^T\mathbf{x}+ b_k</script><p>where $\mathbf{w}_k$ and $b_k$ denote the weight vector and bias of $k$th neuron.</p>
+]]></content>
       <categories>
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>Deep Learning</tag>
+        <tag>Neuron Layers</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/09/03/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>

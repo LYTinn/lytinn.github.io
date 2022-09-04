@@ -165,3 +165,15 @@ Note that $\mathbf{X} = \left(\begin{array}{cc}
 \end{array}\right)$ and $\mathbf{U} = \left(\begin{array}{cc}
     \mathbf{u}_1^T\\\mathbf{u}_2^T\\\vdots\\\mathbf{u}_P^T
 \end{array}\right)$
+For the biases, substitute with $\nabla_{\mathbf{u}_p}J = \nabla_{\mathbf{u}_p}J_p$
+$$\begin{aligned}
+    \nabla_\mathbf{b}J &= \sum_{p=1}^P\nabla_\mathbf{b}J_p\\
+    &=\sum_{p=1}^P\nabla_{\mathbf{u}_p}J_p\\
+    &=\sum_{p=1}^P\nabla_{\mathbf{u}_p}J\\
+    &=\nabla_{\mathbf{u}_1}J + \nabla_{\mathbf{u}_2}J + \dots + \nabla_{\mathbf{u}_P}J\\
+    &= (\nabla_{\mathbf{u}_1}J\quad\nabla_{\mathbf{u}_2}J\quad\dots\quad\nabla_{\mathbf{u}_P}J)\left(\begin{array}{cc}
+        1\\1\\\vdots\\1
+    \end{array}\right)\\
+    &= (\nabla_\mathbf{U})^T\mathbf{1}_P
+\end{aligned}$$
+where $\mathbf{1}_P = (1, 1, \dots, 1)^T$ is a vector of $P$ ones.

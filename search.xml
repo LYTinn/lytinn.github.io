@@ -3,12 +3,36 @@
   <entry>
     <title>Neuron Layers</title>
     <url>/2022/09/04/Neuron-Layers/</url>
-    <content><![CDATA[<h1 id="Neuron-Layers"><a href="#Neuron-Layers" class="headerlink" title="Neuron Layers"></a>Neuron Layers</h1><h2 id="Weight-matrix-of-a-layer"><a href="#Weight-matrix-of-a-layer" class="headerlink" title="Weight matrix of a layer"></a>Weight matrix of a layer</h2><p>Consider a layer of K neurons:<br><img src="../figures/K%20neurons.png" alt="K neurons"></p>
+    <content><![CDATA[<h1 id="Neuron-Layers"><a href="#Neuron-Layers" class="headerlink" title="Neuron Layers"></a>Neuron Layers</h1><ul>
+<li><a href="#neuron-layers">Neuron Layers</a><ul>
+<li><a href="#weight-matrix-of-a-layer">Weight matrix of a layer</a></li>
+<li><a href="#synaptic-input-at-a-layer-for-single-input">Synaptic input at a layer for single input</a><ul>
+<li><a href="#synaptic-input-to-a-layer-for-batch-input">Synaptic input to a layer for batch input</a><h2 id="Weight-matrix-of-a-layer"><a href="#Weight-matrix-of-a-layer" class="headerlink" title="Weight matrix of a layer"></a>Weight matrix of a layer</h2>Consider a layer of K neurons:<br><img src="../figures/K%20neurons.png" alt="K neurons"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>Let $\mathbf{W_k}$ and $b_k$ denote the weight vector and bias of $k$ th neuron. Weights connected to a neuron layer is represented by a weight matrix $\mathbf{W}$ where the columns are given by weight vectors of individual neurons:</p>
 <script type="math/tex; mode=display">\mathbf{W} = (\mathbf{w_1}\quad\mathbf{w_2}\quad\dots\quad\mathbf{w_k})</script><p>and a bias vector $\mathbf{b}$ where each element corresponds to a bias of a neuron:</p>
 <script type="math/tex; mode=display">\mathbf{b} = (b_1, b_2, \dots, b_K)^T</script><h2 id="Synaptic-input-at-a-layer-for-single-input"><a href="#Synaptic-input-at-a-layer-for-single-input" class="headerlink" title="Synaptic input at a layer for single input"></a>Synaptic input at a layer for single input</h2><p>Given an input pattern $x\in \mathbb{R}^n$ to a layer of $K$ neurons. The synaptic input $u_k$ to $k$ th neuron is:</p>
-<script type="math/tex; mode=display">u_k = \mathbf{w}_k^T\mathbf{x}+ b_k</script><p>where $\mathbf{w}_k$ and $b_k$ denote the weight vector and bias of $k$th neuron.</p>
-]]></content>
+<script type="math/tex; mode=display">u_k = \mathbf{w}_k^T\mathbf{x}+ b_k</script><p>where $\mathbf{w}_k$ and $b_k$ denote the weight vector and bias of $k$th neuron. Synaptic input vector $u$ to the layer is:</p>
+<script type="math/tex; mode=display">\mathbf{u} = \left(\begin{array}{cc}
+    u_1\\u_2\\\vdots\\u_k
+\end{array}\right) = \left(\begin{array}{cc}
+    \mathbf{w}_1^T\mathbf{x} + b_1\\
+    \mathbf{w}_2^T\mathbf{x} + b_2\\
+    \vdots\\
+    \mathbf{w}_k^T\mathbf{x} + b_k
+\end{array}\right) = \left(\begin{array}{cc}
+    \mathbf{w}_1^T\\
+    \mathbf{w}_2^T\\
+    \vdots\\
+    \mathbf{w}_k^T\\
+\end{array}\right)\mathbf{x} + \left(\begin{array}{cc}
+    b_1\\b_2\\\vdots\\b_k
+\end{array}\right) = \mathbf{W}^T\mathbf{x} + \mathbf{b}</script><p>where $\mathbf{W}$ is the weight matrix and $\mathbf{b}$ is the bias vector of the layer.</p>
+<h3 id="Synaptic-input-to-a-layer-for-batch-input"><a href="#Synaptic-input-to-a-layer-for-batch-input" class="headerlink" title="Synaptic input to a layer for batch input"></a>Synaptic input to a layer for batch input</h3>]]></content>
       <categories>
         <category>Deep Learning</category>
       </categories>

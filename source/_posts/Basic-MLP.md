@@ -14,6 +14,7 @@ categories:
   - [SGD for single layer](#sgd-for-single-layer)
   - [GD for single layer](#gd-for-single-layer)
 - [Perceptron Layer](#perceptron-layer)
+  - [SGD for perceptron layer](#sgd-for-perceptron-layer)
 
 # Neuron Layer
 A Layer of perceptrons performs
@@ -185,3 +186,8 @@ That is, by computing gradient $\nabla_\mathbf{U}J$ with respect to synaptic inp
 # Perceptron Layer
 A layer of perceptrons performs **multidimensional non-linear regression** and learns a multidimensional non-linear mapping:
 $$\phi = \mathbb{R}^n \rightarrow \mathbb{R}^K$$
+## SGD for perceptron layer
+Given a training pattern $(\mathbf{x}, \mathbf{d})$, note $\mathbf{x} = (x_1, x_2, \dots, x_n)^T \in \mathbb{R}^n$ and $\mathbf{d} = (d_1, d_2, \dots, d_K)^T\in \mathbb{R}^K$. The square error cost function is:
+$$J = \frac{1}{2}\sum_{k=1}^K(d_k - y_k)^2$$
+where $y_k = f(u_k) = \frac{1}{1+e^{-u_k}}$ and $u_k = \mathbf{x}^T\mathbf{w}_k + b_k$. $\mathbf{u_k}$ is the synaptic input of the $k$th neuron. $J$ is the sum of square errors of all the data in the batch. Gradient of $J$ with respect to $u_k$ is:
+$$\frac{\partial J}{\partial u_k} = \frac{\partial J}{\partial y_k}\frac{\partial y_k}{\partial u_k} = -(d_k - y_k)\frac{\partial y_k}{\partial u_k} = -(d_k - y_k)f'(u_k)$$

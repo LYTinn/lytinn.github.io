@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/04/figures/K%20neurons.png">
 <meta property="article:published_time" content="2022-09-04T01:00:58.000Z">
-<meta property="article:modified_time" content="2022-09-04T03:03:01.221Z">
+<meta property="article:modified_time" content="2022-09-04T03:06:05.751Z">
 <meta property="article:author" content="Run">
 <meta property="article:tag" content="Neuron Layers">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-09-04 09:00:58 / Modified: 11:03:01" itemprop="dateCreated datePublished" datetime="2022-09-04T09:00:58+08:00">2022-09-04</time>
+              <time title="Created: 2022-09-04 09:00:58 / Modified: 11:06:05" itemprop="dateCreated datePublished" datetime="2022-09-04T09:00:58+08:00">2022-09-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,7 +286,10 @@
 \end{array}\right)\mathbf{W} + \left(\begin{array}{cc}
     \mathbf{b}^T\\\mathbf{b}^T\\\vdots\\\mathbf{b}^T
 \end{array}\right) = \mathbf{XW} + \mathbf{B}</script><p>where rows $\mathbf{U}$ are synaptic inputs corresponding to individual input patterns.</p>
-<p>The matrix $\mathbf{B} = \left(\begin{array}{cc}<br>    \mathbf{b}^T\\mathbf{b}^T\\vdots\\mathbf{b}^T<br>\end{array}\right)$ has bias vector propagated as rows.</p>
+<p>The matrix </p>
+<script type="math/tex; mode=display">\mathbf{B} = \left(\begin{array}{cc}
+    \mathbf{b}^T\\\mathbf{b}^T\\\vdots\\\mathbf{b}^T
+\end{array}\right)</script><p>has bias vector propagated as rows.</p>
 <p>Using batch in deep learning could accerate the speed of training.</p>
 <h2 id="Activation-at-a-layer-for-batch-input"><a href="#Activation-at-a-layer-for-batch-input" class="headerlink" title="Activation at a layer for batch input"></a>Activation at a layer for batch input</h2><p>Activation of the layer of synaptic input to the layer due to a batch of patterns:</p>
 <script type="math/tex; mode=display">f(\mathbf{U}) = \left(\begin{array}{cc}
@@ -297,7 +300,8 @@
     \vdots\\
     f(\mathbf{u}_P)^T
 \end{array}\right)</script><p>where activation of each pattern is written as rows.</p>
-<h2 id="SGD-for-single-layer"><a href="#SGD-for-single-layer" class="headerlink" title="SGD for single layer"></a>SGD for single layer</h2>
+<h2 id="SGD-for-single-layer"><a href="#SGD-for-single-layer" class="headerlink" title="SGD for single layer"></a>SGD for single layer</h2><p>Computational graph for processing input $(\mathbf{x}, \mathbf{d})$:</p>
+
     </div>
 
     

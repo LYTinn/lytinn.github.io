@@ -13,12 +13,16 @@ categories:
   - [Activation at a layer for batch input](#activation-at-a-layer-for-batch-input)
   - [SGD for single layer](#sgd-for-single-layer)
   - [GD for single layer](#gd-for-single-layer)
+  - [Conclusion for Neuron Layer](#conclusion-for-neuron-layer)
 - [Perceptron Layer](#perceptron-layer)
   - [SGD for perceptron layer](#sgd-for-perceptron-layer)
   - [GD for perceptron layer](#gd-for-perceptron-layer)
+  - [Conclusion for Perceptron Layer](#conclusion-for-perceptron-layer)
+- [Softmax Layer](#softmax-layer)
 
 # Neuron Layer
-A Layer of perceptrons performs
+A Layer of perceptrons performs **multidimensional linear regression** and learns a multidimensional linear mapping:
+$$\phi: \mathbb{R}^n \rightarrow\mathbb{R}^K$$
 ## Weight matrix of a layer
 Consider a layer of K neurons:
 ![K neurons](../figures/K%20neurons.png)
@@ -184,6 +188,9 @@ where $\mathbf{1}_P = (1, 1, \dots, 1)^T$ is a vector of $P$ ones.
 
 That is, by computing gradient $\nabla_\mathbf{U}J$ with respect to synaptic input, the weights and biases can be updated.
 
+## Conclusion for Neuron Layer
+![neuron layer](../figures/linear_learning.png)
+
 # Perceptron Layer
 A layer of perceptrons performs **multidimensional non-linear regression** and learns a multidimensional non-linear mapping:
 $$\phi = \mathbb{R}^n \rightarrow \mathbb{R}^K$$
@@ -221,3 +228,50 @@ $$J = \frac{1}{2}\sum_{p=1}^P\sum_{k=1}^K(d_{pk} - y_{pk})^2$$
 $J$ can be written as the sum of cost due to individual patterns:
 $$J = \sum_{p=1}^PJ_p$$
 where $J_p = \frac{1}{2}\sum_{k=1}^K(d_{pk} - y_{pk})^2$ is the square error for the $p$th pattern.
+$$U = \left(\begin{array}{cc}
+    \mathbf{u}_1^T\\\mathbf{u}_2^T\\\vdots\\\mathbf{u}_P^T
+\end{array}\right)\rightarrow\nabla_\mathbf{u}J = \left(\begin{array}{cc}
+    (\nabla_{\mathbf{u}_1}J)^T\\(\nabla_{\mathbf{u}_2}J)^T\\\vdots\\(\nabla_{\mathbf{u}_P}J)^T
+\end{array}\right) = \left(\begin{array}{cc}
+    (\nabla_{\mathbf{u}_1}J_1)^T\\(\nabla_{\mathbf{u}_2}J_2)^T\\\vdots\\(\nabla_{\mathbf{u}_P}J_P)^T
+\end{array}\right)$$
+substitute $\nabla_\mathbf{u}J = -(\mathbf{b} - \mathbf{y})\cdot f'(\mathbf{u})$:
+$$\nabla_\mathbf{u}J = -\left(\begin{array}{cc}
+    ((\mathbf{d}_1 - \mathbf{y}_1)\cdot f'(\mathbf{u}_1))^T\\
+    ((\mathbf{d}_2 - \mathbf{y}_2)\cdot f'(\mathbf{u}_2))^T\\
+    \vdots\\
+    ((\mathbf{d}_P - \mathbf{y}_P)\cdot f'(\mathbf{u}_P))^T
+\end{array}\right) = -\left(\begin{array}{cc}
+    (\mathbf{d}_1^T - \mathbf{y}_1^T)\cdot f'(\mathbf{u}_1^T)\\
+    (\mathbf{d}_2^T - \mathbf{y}_2^T)\cdot f'(\mathbf{u}_2^T)\\
+    \vdots\\
+    (\mathbf{d}_P^T - \mathbf{y}_P^T)\cdot f'(\mathbf{u}_P^T)
+\end{array}\right)$$
+$$\nabla_\mathbf{U}J = -(\mathbf{D} - \mathbf{Y})\cdot f'(\mathbf{U})$$
+where $\mathbf{D} = \left(\begin{array}{cc}
+    \mathbf{d}_1^T\\\mathbf{d}_2^T\\\vdots\\\mathbf{d}_P^T
+\end{array}\right)$, $\mathbf{Y} = \left(\begin{array}{cc}
+    \mathbf{y}_1^T\\\mathbf{y}_2^T\\\vdots\\\mathbf{y}_P^T
+\end{array}\right)$, and $\mathbf{U} = \left(\begin{array}{cc}
+    \mathbf{u}_1^T\\\mathbf{u}_2^T\\\vdots\\\mathbf{u}_P^T
+\end{array}\right)$
+
+The algorithm is:
+$$\begin{aligned}
+    &\text{Given a training dataset} \{(\mathbf{X}, \mathbf{D})\}\\
+    &\text{Set learning parameter }\alpha\\
+    &\text{Initialize $\mathbf{W}$ and $\mathbf{b}$}\\
+    &\text{Repeat until convergence:}\\
+    &\qquad \mathbf{U} = \mathbf{X}\mathbf{W} + \mathbf{B}\\
+    &\qquad \mathbf{Y} = f(\mathbf{U}) = \frac{1}{1+e^{-\mathbf{U}}}\\
+    &\qquad\nabla_\mathbf{U}J = -(\mathbf{D} - \mathbf{Y})\cdot f'(\mathbf{U})\\
+    &\qquad\nabla_\mathbf{W}J = \mathbf{X}^T\nabla_\mathbf{U}J\\
+    &\qquad\nabla_\mathbf{b}J = (\nabla_\mathbf{U}J)^T\mathbf{1}_P\\
+    &\qquad\mathbf{W}\leftarrow\mathbf{W} - \alpha\nabla_\mathbf{W}J\\
+    &\qquad\mathbf{b}\leftarrow\mathbf{b} - \alpha\nabla_\mathbf{b}J
+\end{aligned}$$
+
+## Conclusion for Perceptron Layer
+![perceptron layer](../figures/perceptron%20layer.png)
+
+# Softmax Layer

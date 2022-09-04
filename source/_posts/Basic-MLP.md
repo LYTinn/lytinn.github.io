@@ -275,3 +275,8 @@ $$\begin{aligned}
 ![perceptron layer](../figures/perceptron%20layer.png)
 
 # Softmax Layer
+Softmax layer is the extension of logistic regression to **multiclass classification** problem, which is also known as *multinomial logistic regression*.
+
+Each neuron in the softmax layer corresponds to one class label. The activation of a neuron gives the probability of the input belonging to that class label. The $K$ neurons in the softmax layer performs $K$ class classification and represent $K$ classes.
+
+The activation of each neuron $k$ estimates the probability $P(y=k|x)$ that the input $\mathbf{x}$ belongs to the class $k$:

@@ -10,6 +10,7 @@
 <li><a href="#synaptic-input-to-a-layer-for-batch-input">Synaptic input to a layer for batch input</a></li>
 <li><a href="#activation-at-a-layer-for-batch-input">Activation at a layer for batch input</a></li>
 <li><a href="#sgd-for-single-layer">SGD for single layer</a></li>
+<li><a href="#gd-for-single-layer">GD for single layer</a></li>
 </ul>
 </li>
 </ul>
@@ -63,7 +64,50 @@
     \vdots\\
     f(\mathbf{u}_P)^T
 \end{array}\right)</script><p>where activation of each pattern is written as rows.</p>
-<h2 id="SGD-for-single-layer"><a href="#SGD-for-single-layer" class="headerlink" title="SGD for single layer"></a>SGD for single layer</h2><p>Computational graph for processing input $(\mathbf{x}, \mathbf{d})$:</p>
+<h2 id="SGD-for-single-layer"><a href="#SGD-for-single-layer" class="headerlink" title="SGD for single layer"></a>SGD for single layer</h2><p>Computational graph for processing input $(\mathbf{x}, \mathbf{d})$:<br><img src="../figures/SGD-for-single-layer.png" alt="SGD for single layer"><br>$J$ denotes the cost function. Now, we need to compute gradients $\nabla<em>\mathbf{W}J$ and $\nabla</em>\mathbf{b}J$ to learn weight matrix $\mathbf{W}$ and bias vector $\mathbf{b}$.</p>
+<p>Consider $k$th neuron at the layer:</p>
+<script type="math/tex; mode=display">u_k = \mathbf{w}_k^T\mathbf{x} + b_k = \sum_{i=0}^dw_{ki}x_i + b_k</script><p>where d is the rank of $\mathbf{x}$. So that</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    &\frac{\partial u_k}{\partial\mathbf{W}_k}\\
+    =& \left(\begin{array}{cc}
+        \frac{\partial (\sum_{i=0}^dw_{ki}x_i + b_k)}{\partial w_{k1}}\\
+        \frac{\partial (\sum_{i=0}^dw_{ki}x_i + b_k)}{\partial w_{k2}}\\
+        \vdots\\
+        \frac{\partial (\sum_{i=0}^dw_{ki}x_i + b_k)}{\partial w_{kd}}
+    \end{array}\right)\\
+    =&\left(\begin{array}{cc}
+        x_1\\x_2\\\vdots\\x_d
+    \end{array}\right)\\
+    =&\mathbf{x}
+\end{aligned}</script><p>The gradient of the cost with respect to the weight connected to $k$th neuron is:</p>
+<script type="math/tex; mode=display">\begin{equation}
+    \nabla_{\mathbf{w}_k}J = \frac{\partial J}{\partial u_k}\frac{\partial u_k}{\partial \mathbf{w}_k} = \mathbf{x}\frac{\partial J}{\partial u_k}
+\end{equation}</script><script type="math/tex; mode=display">\begin{equation}
+    \nabla_{b_k}J = \frac{\partial J}{\partial u_k}\frac{\partial u_k}{\partial b_k} = \frac{\partial J}{\partial u_k}
+\end{equation}</script><p>The gradient of $J$ with respect to $\mathbf{W} = (\mathbf{w_1}\quad \mathbf{w_2}\quad\dots\quad\mathbf{w}_k)$:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \nabla_wJ &= (\nabla_{\mathbf{w}1}J\quad\nabla_{\mathbf{w}2}J\quad\dots\quad\nabla_{\mathbf{w}K}J)\\
+    &=\left(\mathbf{x}\frac{\partial J}{\partial u_1}\quad\mathbf{x}\frac{\partial J}{\partial u_2}\quad\dots\quad\mathbf{x}\frac{\partial J}{\partial u_K}\right)\\
+    &=\mathbf{x}\left(\frac{\partial J}{\partial u_1}\quad\frac{\partial J}{\partial u_2}\quad\dots\quad\frac{\partial J}{\partial u_K}\right)\\
+    &=\mathbf{x}(\nabla_\mathbf{u}J)^T
+\end{aligned}</script><p>where</p>
+<script type="math/tex; mode=display">\nabla_\mathbf{u}J = \frac{\partial J}{\partial \mathbf{u}} = \left(\begin{array}{cc}
+    \frac{\partial J}{\partial u_1}\\\frac{\partial J}{\partial u_2}\\\vdots\\\frac{\partial J}{\partial u_K}
+\end{array}\right)</script><p>Similarly, by substituting $\frac{\partial J}{\partial b_k} = \frac{\partial J}{\partial u_k}$ from (2):</p>
+<script type="math/tex; mode=display">\begin{equation}
+    \nabla_\mathbf{b}J = \left(\begin{array}{cc}
+        \frac{\partial J}{\partial b_1}\\
+        \frac{\partial J}{\partial b_2}\\\vdots\\
+        \frac{\partial J}{\partial b_K}
+    \end{array}\right) = \left(\begin{array}{cc}
+        \frac{\partial J}{\partial u_1}\\
+        \frac{\partial J}{\partial u_2}\\\vdots\\
+        \frac{\partial J}{\partial u_K}
+    \end{array}\right) = \nabla_\mathbf{u}J
+\end{equation}</script><p>Thus, for any income data $\mathbf{x}$, the gradients of $\mathbf{w}$ and $b$ are:</p>
+<script type="math/tex; mode=display">\nabla_\mathbf{w}J = \mathbf{x}(\nabla_\mathbf{u}J)^T\\
+\nabla_\mathbf{b}J = \nabla_\mathbf{u}J</script><p>That is, by computing gradient $\nabla_\mathbf{u}J$ with respect to synaptic input $\mathbf{u}$, the gradient of cost J with respect to the weights and biases is obtained.</p>
+<h2 id="GD-for-single-layer"><a href="#GD-for-single-layer" class="headerlink" title="GD for single layer"></a>GD for single layer</h2><p>Given a set of patterns ${(\mathbf{x}<em>p, \mathbf{d}_p)}</em>{p=1}^P$ where $\mathbf{x}_p\in \mathbb{R}^n$</p>
 ]]></content>
       <categories>
         <category>Deep Learning</category>

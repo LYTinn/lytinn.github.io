@@ -15,6 +15,7 @@ categories:
   - [GD for single layer](#gd-for-single-layer)
 - [Perceptron Layer](#perceptron-layer)
   - [SGD for perceptron layer](#sgd-for-perceptron-layer)
+  - [GD for perceptron layer](#gd-for-perceptron-layer)
 
 # Neuron Layer
 A Layer of perceptrons performs
@@ -98,15 +99,15 @@ Computational graph for processing input $(\mathbf{x}, \mathbf{d})$:
 $J$ denotes the cost function. Now, we need to compute gradients $\nabla_\mathbf{W}J$ and $\nabla_\mathbf{b}J$ to learn the weight matrix $\mathbf{W}$ and the bias vector $\mathbf{b}$.
 
 Consider $k$th neuron at the layer:
-$$u_k = \mathbf{w}_k^T\mathbf{x} + b_k = \sum_{i=0}^dw_{ki}x_i + b_k$$
-where d is the rank of $\mathbf{x}$. So that
+$$u_k = \mathbf{w}_k^T\mathbf{x} + b_k = \sum_{i=0}^nw_{ki}x_i + b_k$$
+where n is the rank of $\mathbf{x}$. So that
 $$\begin{aligned}
     &\frac{\partial u_k}{\partial\mathbf{W}_k}\\
     =& \left(\begin{array}{cc}
-        \frac{\partial (\sum_{i=0}^dw_{ki}x_i + b_k)}{\partial w_{k1}}\\
-        \frac{\partial (\sum_{i=0}^dw_{ki}x_i + b_k)}{\partial w_{k2}}\\
+        \frac{\partial (\sum_{i=0}^nw_{ki}x_i + b_k)}{\partial w_{k1}}\\
+        \frac{\partial (\sum_{i=0}^nw_{ki}x_i + b_k)}{\partial w_{k2}}\\
         \vdots\\
-        \frac{\partial (\sum_{i=0}^dw_{ki}x_i + b_k)}{\partial w_{kd}}
+        \frac{\partial (\sum_{i=0}^nw_{ki}x_i + b_k)}{\partial w_{kn}}
     \end{array}\right)\\
     =&\left(\begin{array}{cc}
         x_1\\x_2\\\vdots\\x_d
@@ -189,5 +190,31 @@ $$\phi = \mathbb{R}^n \rightarrow \mathbb{R}^K$$
 ## SGD for perceptron layer
 Given a training pattern $(\mathbf{x}, \mathbf{d})$, note $\mathbf{x} = (x_1, x_2, \dots, x_n)^T \in \mathbb{R}^n$ and $\mathbf{d} = (d_1, d_2, \dots, d_K)^T\in \mathbb{R}^K$. The square error cost function is:
 $$J = \frac{1}{2}\sum_{k=1}^K(d_k - y_k)^2$$
-where $y_k = f(u_k) = \frac{1}{1+e^{-u_k}}$ and $u_k = \mathbf{x}^T\mathbf{w}_k + b_k$. $\mathbf{u_k}$ is the synaptic input of the $k$th neuron. $J$ is the sum of square errors of all the data in the batch. Gradient of $J$ with respect to $u_k$ is:
+where $y_k = f(u_k) = \frac{1}{1+e^{-u_k}}$ and $u_k = \mathbf{x}^T\mathbf{w}_k + b_k$. $\mathbf{u_k}$ is the synaptic input of the $k$th neuron. $J$ is the sum of square errors of all the nueron outputs. Gradient of $J$ with respect to $u_k$ is:
 $$\frac{\partial J}{\partial u_k} = \frac{\partial J}{\partial y_k}\frac{\partial y_k}{\partial u_k} = -(d_k - y_k)\frac{\partial y_k}{\partial u_k} = -(d_k - y_k)f'(u_k)$$
+Substituting $\nabla_{u_k}J = \frac{\partial J}{\partial u_k} = -(d_k - y_k)f'(u_k)$:
+$$\nabla_\mathbf{u}J = -\left(\begin{array}{cc}
+    (d_1 - y_1)f'(u_1)\\(d_2 - y_2)f'(u_2)\\\vdots\\(d_1 - y_1)f'(u_1)
+\end{array}\right) = -(\mathbf{d} - \mathbf{y})\cdot f'(\mathbf{u})$$
+where "$\cdot$" means element-wise multiplication.
+
+The algorithm is:
+$$\begin{aligned}
+    &\text{Given a training dataset} \{(\mathbf{x}, \mathbf{d})\}\\
+    &\text{Set learning parameter }\alpha\\
+    &\text{Initialize $\mathbf{W}$ and $\mathbf{b}$}\\
+    &\text{Repeat until convergence:}\\
+    &\qquad\text{For every pattern }(\mathbf{x}, \mathbf{d}):\\
+    &\qquad\qquad \mathbf{u} = \mathbf{W}^T\mathbf{x} + \mathbf{b}\\
+    &\qquad\qquad \mathbf{y} = f(\mathbf{u}) = \frac{1}{1+e^{-\mathbf{u}}}\\
+    &\qquad\qquad\nabla_\mathbf{u}J = -(\mathbf{d} - \mathbf{y})\cdot f'(\mathbf{u})\\
+    &\qquad\qquad\nabla_\mathbf{W}J = \mathbf{x}(\nabla_\mathbf{u}J)^T\\
+    &\qquad\qquad\nabla_\mathbf{b}J = \nabla_\mathbf{u}J\\
+    &\qquad\qquad\mathbf{W}\leftarrow\mathbf{W} - \alpha\nabla_\mathbf{W}J\\
+    &\qquad\qquad\mathbf{b}\leftarrow\mathbf{b} - \alpha\nabla_\mathbf{b}J
+\end{aligned}$$
+## GD for perceptron layer
+Given a training dataset $\{\mathbf{x}_p, \mathbf{d}_p\}_{p=1}^P$. Note $\mathbf{x}_p = (x_{p1}, x_{p2}, \dots, x_{pn})^T \in \mathbb{R}^n$ and $\mathbf{d}_p = (d_{p1}, d_{p2}, \dots, d_{pK})^T\in \mathbb{R}^K$.
+
+The cost function $J$ is given by the sum of square errors:
+$$J = \frac{1}{2}\sum_{p=1}^P\sum_{k=1}^K(d_{pk} - y_{pk})^2$$

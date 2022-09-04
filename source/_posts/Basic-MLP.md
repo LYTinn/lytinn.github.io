@@ -1,20 +1,22 @@
 ---
-title: Neuron Layers
+title: Basic MLP
 date: 2022-09-04 09:00:58
 tags: 
-- Neuron Layers
+- MLP
 categories:
 - Deep Learning
 ---
-# Neuron Layers
-- [Neuron Layers](#neuron-layers)
+- [Neuron Layer](#neuron-layer)
   - [Weight matrix of a layer](#weight-matrix-of-a-layer)
   - [Synaptic input at a layer for single input](#synaptic-input-at-a-layer-for-single-input)
   - [Synaptic input to a layer for batch input](#synaptic-input-to-a-layer-for-batch-input)
   - [Activation at a layer for batch input](#activation-at-a-layer-for-batch-input)
   - [SGD for single layer](#sgd-for-single-layer)
   - [GD for single layer](#gd-for-single-layer)
+- [Perceptron Layer](#perceptron-layer)
 
+# Neuron Layer
+A Layer of perceptrons performs
 ## Weight matrix of a layer
 Consider a layer of K neurons:
 ![K neurons](../figures/K%20neurons.png)
@@ -177,3 +179,9 @@ $$\begin{aligned}
     &= (\nabla_\mathbf{U})^T\mathbf{1}_P
 \end{aligned}$$
 where $\mathbf{1}_P = (1, 1, \dots, 1)^T$ is a vector of $P$ ones.
+
+That is, by computing gradient $\nabla_\mathbf{U}J$ with respect to synaptic input, the weights and biases can be updated.
+
+# Perceptron Layer
+A layer of perceptrons performs **multidimensional non-linear regression** and learns a multidimensional non-linear mapping:
+$$\phi = \mathbb{R}^n \rightarrow \mathbb{R}^K$$

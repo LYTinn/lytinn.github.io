@@ -218,3 +218,6 @@ Given a training dataset $\{\mathbf{x}_p, \mathbf{d}_p\}_{p=1}^P$. Note $\mathbf
 
 The cost function $J$ is given by the sum of square errors:
 $$J = \frac{1}{2}\sum_{p=1}^P\sum_{k=1}^K(d_{pk} - y_{pk})^2$$
+$J$ can be written as the sum of cost due to individual patterns:
+$$J = \sum_{p=1}^PJ_p$$
+where $J_p = \frac{1}{2}\sum_{k=1}^K(d_{pk} - y_{pk})^2$ is the square error for the $p$th pattern.

@@ -6,13 +6,14 @@
     <content><![CDATA[<h1 id="Neuron-Layers"><a href="#Neuron-Layers" class="headerlink" title="Neuron Layers"></a>Neuron Layers</h1><ul>
 <li><a href="#neuron-layers">Neuron Layers</a><ul>
 <li><a href="#weight-matrix-of-a-layer">Weight matrix of a layer</a></li>
-<li><a href="#synaptic-input-at-a-layer-for-single-input">Synaptic input at a layer for single input</a><ul>
-<li><a href="#synaptic-input-to-a-layer-for-batch-input">Synaptic input to a layer for batch input</a><h2 id="Weight-matrix-of-a-layer"><a href="#Weight-matrix-of-a-layer" class="headerlink" title="Weight matrix of a layer"></a>Weight matrix of a layer</h2>Consider a layer of K neurons:<br><img src="../figures/K%20neurons.png" alt="K neurons"></li>
+<li><a href="#synaptic-input-at-a-layer-for-single-input">Synaptic input at a layer for single input</a></li>
+<li><a href="#synaptic-input-to-a-layer-for-batch-input">Synaptic input to a layer for batch input</a></li>
+<li><a href="#activation-at-a-layer-for-batch-input">Activation at a layer for batch input</a></li>
+<li><a href="#sgd-for-single-layer">SGD for single layer</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+<h2 id="Weight-matrix-of-a-layer"><a href="#Weight-matrix-of-a-layer" class="headerlink" title="Weight matrix of a layer"></a>Weight matrix of a layer</h2><p>Consider a layer of K neurons:<br><img src="../figures/K%20neurons.png" alt="K neurons"></p>
 <p>Let $\mathbf{W_k}$ and $b_k$ denote the weight vector and bias of $k$ th neuron. Weights connected to a neuron layer is represented by a weight matrix $\mathbf{W}$ where the columns are given by weight vectors of individual neurons:</p>
 <script type="math/tex; mode=display">\mathbf{W} = (\mathbf{w_1}\quad\mathbf{w_2}\quad\dots\quad\mathbf{w_k})</script><p>and a bias vector $\mathbf{b}$ where each element corresponds to a bias of a neuron:</p>
 <script type="math/tex; mode=display">\mathbf{b} = (b_1, b_2, \dots, b_K)^T</script><h2 id="Synaptic-input-at-a-layer-for-single-input"><a href="#Synaptic-input-at-a-layer-for-single-input" class="headerlink" title="Synaptic input at a layer for single input"></a>Synaptic input at a layer for single input</h2><p>Given an input pattern $x\in \mathbb{R}^n$ to a layer of $K$ neurons. The synaptic input $u_k$ to $k$ th neuron is:</p>
@@ -32,7 +33,34 @@
 \end{array}\right)\mathbf{x} + \left(\begin{array}{cc}
     b_1\\b_2\\\vdots\\b_k
 \end{array}\right) = \mathbf{W}^T\mathbf{x} + \mathbf{b}</script><p>where $\mathbf{W}$ is the weight matrix and $\mathbf{b}$ is the bias vector of the layer.</p>
-<h3 id="Synaptic-input-to-a-layer-for-batch-input"><a href="#Synaptic-input-to-a-layer-for-batch-input" class="headerlink" title="Synaptic input to a layer for batch input"></a>Synaptic input to a layer for batch input</h3>]]></content>
+<h2 id="Synaptic-input-to-a-layer-for-batch-input"><a href="#Synaptic-input-to-a-layer-for-batch-input" class="headerlink" title="Synaptic input to a layer for batch input"></a>Synaptic input to a layer for batch input</h2><p>Given a set ${\mathbf{x}<em>p}</em>{p=1}^P$ input patterns to a layer of $K$ neurons where $\mathbf{x}_p\in \mathbb{R}^n$.</p>
+<p>Synaptic input $\mathbf{u}_p$ to the layer for an input pattern $\mathbf{x}_p$ is:</p>
+<script type="math/tex; mode=display">\mathbf{u}_p = \mathbf{W}^T\mathbf{x}_p + \mathbf{b}</script><p>The synaptic input matrix $\mathbf{U}$ to the layer for P patterns:</p>
+<script type="math/tex; mode=display">\mathbf{U} = \left(\begin{array}{cc}
+    \mathbf{x}_1^T\mathbf{W} + \mathbf{b}^T\\
+    \mathbf{x}_2^T\mathbf{W} + \mathbf{b}^T\\
+    \vdots\\
+    \mathbf{x}_P^T\mathbf{W} + \mathbf{b}^T
+\end{array}\right) = \left(\begin{array}{cc}
+    \mathbf{x}_1^T\\
+    \mathbf{x}_2^T\\
+    \vdots\\
+    \mathbf{x}_P^T
+\end{array}\right)\mathbf{W} + \left(\begin{array}{cc}
+    \mathbf{b}^T\\\mathbf{b}^T\\\vdots\\\mathbf{b}^T
+\end{array}\right) = \mathbf{XW} + \mathbf{B}</script><p>where rows $\mathbf{U}$ are synaptic inputs corresponding to individual input patterns.</p>
+<p>The matrix $\mathbf{B} = \left(\begin{array}{cc}<br>    \mathbf{b}^T\\mathbf{b}^T\\vdots\\mathbf{b}^T<br>\end{array}\right)$ has bias vector propagated as rows.</p>
+<p>Using batch in deep learning could accerate the speed of training.</p>
+<h2 id="Activation-at-a-layer-for-batch-input"><a href="#Activation-at-a-layer-for-batch-input" class="headerlink" title="Activation at a layer for batch input"></a>Activation at a layer for batch input</h2><p>Activation of the layer of synaptic input to the layer due to a batch of patterns:</p>
+<script type="math/tex; mode=display">f(\mathbf{U}) = \left(\begin{array}{cc}
+    f(\mathbf{u}_1^T) \\ f(\mathbf{u}_2^T) \\\vdots \\f(\mathbf{u}_P^T)
+\end{array}\right) = \left(\begin{array}{cc}
+    f(\mathbf{u}_1)^T\\
+    f(\mathbf{u}_2)^T\\
+    \vdots\\
+    f(\mathbf{u}_P)^T
+\end{array}\right)</script><p>where activation of each pattern is written as rows.</p>
+<h2 id="SGD-for-single-layer"><a href="#SGD-for-single-layer" class="headerlink" title="SGD for single layer"></a>SGD for single layer</h2>]]></content>
       <categories>
         <category>Deep Learning</category>
       </categories>

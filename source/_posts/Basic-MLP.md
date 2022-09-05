@@ -280,3 +280,10 @@ Softmax layer is the extension of logistic regression to **multiclass classifica
 Each neuron in the softmax layer corresponds to one class label. The activation of a neuron gives the probability of the input belonging to that class label. The $K$ neurons in the softmax layer performs $K$ class classification and represent $K$ classes.
 
 The activation of each neuron $k$ estimates the probability $P(y=k|x)$ that the input $\mathbf{x}$ belongs to the class $k$:
+$$
+P(y = k|\mathbf{x}) = f(u_k) = \frac{e_{u_k}}{\sum_{k'=1}^Ke^{u_{k'}}}
+$$
+where $u_k = \mathbf{w}_k^T\mathbf{x} + b_k$, and $\mathbf{w}_k$ is weight vector and $b_k$ is bias of neuron $k$.
+
+The above function $f$ is known as **softmax activation function**.
+

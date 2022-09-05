@@ -353,4 +353,35 @@ For the biases, substitute with <span class="katex"><span class="katex-mathml"><
         <tag>NLP</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Sentiment Analysis paper read</title>
+    <url>/2022/09/05/Sentiment-Analysis-paper-read/</url>
+    <content><![CDATA[<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#smart">SMART</a>
+<ul>
+<li><a href="#dataset">Dataset</a></li>
+<li><a href="#motivation">Motivation</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
+<p>In this post, we will read some top papers about sentiment analysis. The papers are choosen from <a href="https://paperswithcode.com/task/sentiment-analysis">paper with code</a>.</p>
+<h1 id="smart"><a class="markdownIt-Anchor" href="#smart"></a> SMART</h1>
+<p>The <a href="https://arxiv.org/pdf/1911.03437v5.pdf">SMART: Robust and Efficient Fine-Tuning for Pre-trained Natural Language Models through Principled Regularized Optimization</a> published in 2019 is the top paper for sentiment analysis on SST-2 Binary classification. It reaches 97.5% in accuracy.</p>
+<h2 id="dataset"><a class="markdownIt-Anchor" href="#dataset"></a> Dataset</h2>
+<p>The dataset of this paper is the <strong>Standford Sentiment Treebank (SST)</strong>. SST is a corpus with fully labeled parse trees that allows for a complete analysis of the compositional effects of sentiment in language. The corpus is based on the dataset introduced by Pang and Lee (2005) and consists of 11,855 single sentences extracted from <strong>movie reviews</strong>. It was parsed with the Stanford parser and includes a total of 215,154 unique phrases from those parse trees, each annotated by 3 human judges.</p>
+<p>Each phrase is labelled as either <em>negative, somewhat negative, neutral, somewhat positive</em> or <em>positive</em>. The corpus with all 5 labels is referred to as SST-5 or SST fine-grained. Binary classification experiments on full sentences (<em>negative</em> or <em>somewhat negative</em> vs <em>somewhat positive</em> or <em>positive</em> with <em>neutral</em> sentences discarded) refer to the dataset as SST-2 or SST binary.</p>
+<h2 id="motivation"><a class="markdownIt-Anchor" href="#motivation"></a> Motivation</h2>
+<p>When performing NLP models on downstream tasks, because of the limit fine-tuning data resources and high complexity of pre-trained model, the fine-tuning always cause overfitting.</p>
+<p>The team comes up with a framework to fine-tune the pre-trained model on the downstream tasks, avoiding over-fitting and getting a better performance.</p>
+]]></content>
+      <categories>
+        <category>Natural Language Processing</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>Sentiment Analysis</tag>
+      </tags>
+  </entry>
 </search>

@@ -19,6 +19,8 @@ categories:
   - [GD for perceptron layer](#gd-for-perceptron-layer)
   - [Conclusion for Perceptron Layer](#conclusion-for-perceptron-layer)
 - [Softmax Layer](#softmax-layer)
+  - [SGD for softmax layer](#sgd-for-softmax-layer)
+  - [GD for softmax layer](#gd-for-softmax-layer)
 
 # Neuron Layer
 A Layer of perceptrons performs **multidimensional linear regression** and learns a multidimensional linear mapping:
@@ -287,3 +289,68 @@ where $u_k = \mathbf{w}_k^T\mathbf{x} + b_k$, and $\mathbf{w}_k$ is weight vecto
 
 The above function $f$ is known as **softmax activation function**.
 
+The ouput $y$ donotes the class label of the input pattern, which is given by
+$$
+y = \argmax_k P(y=k|\mathbf{x}) = \argmax_k f(u_k)
+$$
+That is, the class label is assigned to the class with the maximum activation.
+## SGD for softmax layer
+Given a training pattern $(\mathbf{x}, d)$ where $\mathbf{x}\in \mathbb{R}^n$ and $d\in \{1,2,\dots,K\}$. The cost function for learning is by the *multiclass cross-entropy*:
+$$
+J = -\sum_{k=1}^K 1(d=k)log(f(u_k))
+$$
+where $u_k$ is the synaptic input to the $k$th neuron. 
+
+The cost function can also be written as
+$$
+J = -\log(f(u_d))
+$$
+where $d$ is the target label of input $\mathbf{x}$.
+
+The gradient with respect to $u_k$ is given by
+$$
+\frac{\partial J}{\partial u_k} = -\frac{1}{f(u_d)}\frac{\partial f(u_d)}{\partial u_k}
+$$
+where
+$$
+\frac{\partial f(u_d)}{\partial u_k} = \frac{\partial}{\partial u_k}\left(\frac{e_{u_d}}{\sum_{k'=1}^K e^{u_{k'}}}\right)
+$$
+The above differentiation need to be considered separately for $k=d$ and for $k\neq d$.
+
+If $k = d$:
+$$
+\begin{aligned}
+    \frac{\partial f(u_d)}{\partial u_k}&=\frac{\partial}{\partial u_k}\left(\frac{u^{u_k}}{\sum_{k'=1}^Ke^{u_{k'}}}\right)\\
+    &=\frac{\left(\sum_{k'=1}^Ke^{u_{k'}}\right)e^{u_k} - e^{u_k}e^{u_k}}{\left(\sum_{k'=1}^Ke^{u_{k'}}\right)^2}\\
+    &=\frac{e^{u_k}}{\sum_{k'=1}^Ke^{u_{k'}}}\left(1-\frac{e^{u_k}}{\sum_{k'=1}^Ke^{u_{k'}}}\right)\\
+    &=f(u_k)(1-f(u_k))\\
+    &=f(u_d)(1(k=d) - f(u_k))
+\end{aligned}
+$$
+If $k \neq d$:
+$$
+\begin{aligned}
+    \frac{\partial f(u_d)}{\partial u_k} &= \frac{\partial}{\partial u_k}\left(\frac{e^{u_d}}{\sum_{k'=1}^Ke^{u_{k'}}}\right)\\
+    &=-\frac{e^{u_d}e^{u_k}}{\left(\sum_{k'=1}^Ke^{u_{k'}}\right)^2}\\
+    &=-f(u_d)f(u_k)\\
+    &=f(u_d)(1(k=d) - f(u_k))
+\end{aligned}
+$$
+Thus
+$$
+\frac{\partial f(u_d)}{\partial u_k} = f(u_d)(1(d=k) - f(u_k))\\
+\frac{\partial J}{\partial u_k} = -\frac{1}{f(u_d)}\frac{\partial f(u_d)}{\partial u_k} = -(1(d=k)-f(u_k))
+$$
+Gradient $J$ with respect to $\mathbf{u}$:
+$$
+\nabla_{\mathbf{u}}J = \left(\begin{matrix}
+    \nabla_{u_1}J\\\nabla_{u_2}J\\\vdots\\\nabla_{u_K}J
+\end{matrix}\right) = -\left(\begin{matrix}
+    1(d=1)-f(u_1)\\1(d=2)-f(u_2)\\\vdots\\1(d=K)-f(u_K)
+\end{matrix}\right) = -(1(\mathbf{k}=d) - f(\mathbf{u}))
+$$
+where $\mathbf{k} = (1\quad2\quad\dots\quad K)^T$
+
+Note that $1(\mathbf{k} = d)$ is a one-hot vector where the element corresponding to the target label $d$ is "1" and elsewhere is "0".
+
+## GD for softmax layer

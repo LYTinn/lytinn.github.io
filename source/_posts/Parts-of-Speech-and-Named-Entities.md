@@ -11,8 +11,7 @@ categories:
   - [Named Entity Recognition (NER)](#named-entity-recognition-ner)
   - [Sequence labeling:](#sequence-labeling)
 - [POS Tagging](#pos-tagging)
-  - [Closed classes](#closed-classes)
-  - [Open classes](#open-classes)
+  - [Why POS tagging is challenging?](#why-pos-tagging-is-challenging)
 
 # POS and NER: Sequence Labeling
 ## Parts of speech (POS) 
@@ -32,8 +31,30 @@ NEs are useful clues to sentence structure and meaning understanding. Knowing if
 # POS Tagging
 There are multiple POS tagsets defined. For example, the following are 17 parts of speech in the Universal Dependecies tagset.
 ![pos tagging](../figures/POStagging.png)
-## Closed classes
-Closed classes are those with relatively **fixed membership**, such as prepositions; new prepositions are rarely coined.
+
+**Closed classes** are those with relatively **fixed membership**, such as prepositions; new prepositions are rarely coined.
 
 Closed class words are generally **function words** (e.g. of, it, and) which tend to be very short, occur frequently, and often have structuring uses in grammar.
-## Open classes
+
+Nouns and verbs are maong **open classes**; new nouns and verbs like *iPhone* or *fax* are continually being created or borrowed.
+
+**Prepositions** indicate spatial ot temporal relations, and relations.
+
+**Determiners** like *this* and *that* can mark the start of article English noun phrase.
+
+**Pronouns** acts as a shorthand for referring to an entity or event.
+- **Persional pronouns** refer to person or entities (you, she, I, it, me, etc.)
+- **Possessive pronouns** are forms of personal pronouns that indicate either actual possession ot more often just an abstract relation between the person and some object (my, your, his, her, its, one's, our, their, etc.)
+- **Wh-pronouns** (What, who, whom, whoever, etc.) are used in certain question forms, or act as complementizers.
+
+The 45-tag Penn Treebanc tagset is another tagset example.
+![45-tag](../figures/45-tag.png)
+
+Part-of-speech tagging is the process of assigning a part-of-speech to each word in a text.
+
+## Why POS tagging is challenging?
+Words are **ambiguous** -- have more than one possible part-of-speech. And the example words may contain multiple parts-of-speech. For example:
+> **Book** that flight; Hand me that **book**.
+
+> The **back** door; On my **back**; Win the voters **back**; Promised to **back** the bill.
+

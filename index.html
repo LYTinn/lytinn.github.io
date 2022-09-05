@@ -187,6 +187,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Run">
+      <meta itemprop="description" content="This blog will record my thinking and learning notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LYTinn">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/05/Parts-of-Speech-and-Named-Entities/" class="post-title-link" itemprop="url">Parts of Speech and Named Entities</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:16:31" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Natural-Language-Processing/" itemprop="url" rel="index"><span itemprop="name">Natural Language Processing</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><a href="#pos-and-ner-sequence-labeling">POS and NER: Sequence Labeling</a>
+<ul>
+<li><a href="#parts-of-speech-pos">Parts of speech (POS)</a></li>
+<li><a href="#named-entity-recognition-ner">Named Entity Recognition (NER)</a></li>
+<li><a href="#sequence-labeling">Sequence labeling:</a></li>
+</ul>
+</li>
+<li><a href="#pos-tagging">POS Tagging</a>
+<ul>
+<li><a href="#closed-classes">Closed classes</a></li>
+<li><a href="#open-classes">Open classes</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="pos-and-ner-sequence-labeling"><a class="markdownIt-Anchor" href="#pos-and-ner-sequence-labeling"></a> POS and NER: Sequence Labeling</h1>
+<h2 id="parts-of-speech-pos"><a class="markdownIt-Anchor" href="#parts-of-speech-pos"></a> Parts of speech (POS)</h2>
+<p>The parts of speech (POS) refers to <strong>word classes</strong> such as Noun, Verb, Adjective, etc.</p>
+<p>It also known as lexical categories, word classes, morphological classes, lexical tags. Knowing word class tells us more about neighboring words and syntactic structure. E.g. nouns in English are often preceded by determiners and adjectives. Verbs have dependency links to nouns. POS tagging is a key aspect of parsing sentence structure.</p>
+<h2 id="named-entity-recognition-ner"><a class="markdownIt-Anchor" href="#named-entity-recognition-ner"></a> Named Entity Recognition (NER)</h2>
+<p>The named entity recognition (NER) is proper name for person, location, organization, etc.</p>
+<p>NEs are useful clues to sentence structure and meaning understanding. Knowing if a named entity like Washington is a name of person, a place, or a university is important to tasks like question answering and information extraction.</p>
+<h2 id="sequence-labeling"><a class="markdownIt-Anchor" href="#sequence-labeling"></a> Sequence labeling:</h2>
+<ul>
+<li><strong>POS tagging</strong> takes a sequence of words and assigns each word a POS like NOUN or VERB.</li>
+<li><strong>Named Entity Recognition (NER)</strong> assigns words or phrases tags like PERSON, LOCATION, or ORGANIZATION.</li>
+</ul>
+<h1 id="pos-tagging"><a class="markdownIt-Anchor" href="#pos-tagging"></a> POS Tagging</h1>
+<p>There are multiple POS tagsets defined. For example, the following are 17 parts of speech in the Universal Dependecies tagset.<br />
+<img src="../figures/POStagging.png" alt="pos tagging" /></p>
+<h2 id="closed-classes"><a class="markdownIt-Anchor" href="#closed-classes"></a> Closed classes</h2>
+<p>Closed classes are those with relatively <strong>fixed membership</strong>, such as prepositions; new prepositions are rarely coined.</p>
+<p>Closed class words are generally <strong>function words</strong> (e.g. of, it, and) which tend to be very short, occur frequently, and often have structuring uses in grammar.</p>
+<h2 id="open-classes"><a class="markdownIt-Anchor" href="#open-classes"></a> Open classes</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/04/Basic-MLP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -588,20 +689,20 @@ For the biases, substitute with <span class="katex"><span class="katex-mathml"><
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

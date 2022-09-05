@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="This blog will record my thinking and learning notes.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LYTinn">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Closed classes Open classes     POS and NER: Sequence Labeling  Parts of speech">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Parts of Speech and Named Entities">
+<meta property="og:url" content="http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/index.html">
 <meta property="og:site_name" content="LYTinn">
-<meta property="og:description" content="This blog will record my thinking and learning notes.">
+<meta property="og:description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Closed classes Open classes     POS and NER: Sequence Labeling  Parts of speech">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/05/figures/POStagging.png">
+<meta property="article:published_time" content="2022-09-05T00:56:06.000Z">
+<meta property="article:modified_time" content="2022-09-05T01:16:31.921Z">
 <meta property="article:author" content="Run">
+<meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/05/figures/POStagging.png">
 
-<link rel="canonical" href="http://example.com/archives/">
+<link rel="canonical" href="http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | LYTinn</title>
+  <title>Parts of Speech and Named Entities | LYTinn</title>
   
 
 
@@ -181,76 +186,129 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 2 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Run">
+      <meta itemprop="description" content="This blog will record my thinking and learning notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LYTinn">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Parts of Speech and Named Entities
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:16:31" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Natural-Language-Processing/" itemprop="url" rel="index"><span itemprop="name">Natural Language Processing</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-05T08:56:06+08:00"
-              content="2022-09-05">
-          09-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/05/Parts-of-Speech-and-Named-Entities/" itemprop="url">
-            <span itemprop="name">Parts of Speech and Named Entities</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-04T09:00:58+08:00"
-              content="2022-09-04">
-          09-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/04/Basic-MLP/" itemprop="url">
-            <span itemprop="name">Basic MLP</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <ul>
+<li><a href="#pos-and-ner-sequence-labeling">POS and NER: Sequence Labeling</a>
+<ul>
+<li><a href="#parts-of-speech-pos">Parts of speech (POS)</a></li>
+<li><a href="#named-entity-recognition-ner">Named Entity Recognition (NER)</a></li>
+<li><a href="#sequence-labeling">Sequence labeling:</a></li>
+</ul>
+</li>
+<li><a href="#pos-tagging">POS Tagging</a>
+<ul>
+<li><a href="#closed-classes">Closed classes</a></li>
+<li><a href="#open-classes">Open classes</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="pos-and-ner-sequence-labeling"><a class="markdownIt-Anchor" href="#pos-and-ner-sequence-labeling"></a> POS and NER: Sequence Labeling</h1>
+<h2 id="parts-of-speech-pos"><a class="markdownIt-Anchor" href="#parts-of-speech-pos"></a> Parts of speech (POS)</h2>
+<p>The parts of speech (POS) refers to <strong>word classes</strong> such as Noun, Verb, Adjective, etc.</p>
+<p>It also known as lexical categories, word classes, morphological classes, lexical tags. Knowing word class tells us more about neighboring words and syntactic structure. E.g. nouns in English are often preceded by determiners and adjectives. Verbs have dependency links to nouns. POS tagging is a key aspect of parsing sentence structure.</p>
+<h2 id="named-entity-recognition-ner"><a class="markdownIt-Anchor" href="#named-entity-recognition-ner"></a> Named Entity Recognition (NER)</h2>
+<p>The named entity recognition (NER) is proper name for person, location, organization, etc.</p>
+<p>NEs are useful clues to sentence structure and meaning understanding. Knowing if a named entity like Washington is a name of person, a place, or a university is important to tasks like question answering and information extraction.</p>
+<h2 id="sequence-labeling"><a class="markdownIt-Anchor" href="#sequence-labeling"></a> Sequence labeling:</h2>
+<ul>
+<li><strong>POS tagging</strong> takes a sequence of words and assigns each word a POS like NOUN or VERB.</li>
+<li><strong>Named Entity Recognition (NER)</strong> assigns words or phrases tags like PERSON, LOCATION, or ORGANIZATION.</li>
+</ul>
+<h1 id="pos-tagging"><a class="markdownIt-Anchor" href="#pos-tagging"></a> POS Tagging</h1>
+<p>There are multiple POS tagsets defined. For example, the following are 17 parts of speech in the Universal Dependecies tagset.<br />
+<img src="../figures/POStagging.png" alt="pos tagging" /></p>
+<h2 id="closed-classes"><a class="markdownIt-Anchor" href="#closed-classes"></a> Closed classes</h2>
+<p>Closed classes are those with relatively <strong>fixed membership</strong>, such as prepositions; new prepositions are rarely coined.</p>
+<p>Closed class words are generally <strong>function words</strong> (e.g. of, it, and) which tend to be very short, occur frequently, and often have structuring uses in grammar.</p>
+<h2 id="open-classes"><a class="markdownIt-Anchor" href="#open-classes"></a> Open classes</h2>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NLP/" rel="tag"># NLP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/04/Basic-MLP/" rel="prev" title="Basic MLP">
+      <i class="fa fa-chevron-left"></i> Basic MLP
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -297,6 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pos-and-ner-sequence-labeling"><span class="nav-number">1.</span> <span class="nav-text"> POS and NER: Sequence Labeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parts-of-speech-pos"><span class="nav-number">1.1.</span> <span class="nav-text"> Parts of speech (POS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#named-entity-recognition-ner"><span class="nav-number">1.2.</span> <span class="nav-text"> Named Entity Recognition (NER)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sequence-labeling"><span class="nav-number">1.3.</span> <span class="nav-text"> Sequence labeling:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pos-tagging"><span class="nav-number">2.</span> <span class="nav-text"> POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#closed-classes"><span class="nav-number">2.1.</span> <span class="nav-text"> Closed classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#open-classes"><span class="nav-number">2.2.</span> <span class="nav-text"> Open classes</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -485,11 +544,30 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/archives/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/',]
       });
       });
   </script>
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '80fcc00a44c898c469f7',
+      clientSecret: 'f100b22e2b1789c00cb57522c7aae1fdc231c97a',
+      repo        : 'lytinn.github.io',
+      owner       : 'LYTinn',
+      admin       : ['LYTinn'],
+      id          : 'e58b9d855b622548fec5d93918f55378',
+        language: 'en',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>

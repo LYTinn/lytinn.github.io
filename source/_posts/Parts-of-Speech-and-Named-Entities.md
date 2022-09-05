@@ -112,6 +112,44 @@ A hidden Markov model (HMM) allows us to talk about both **observed events** and
 - Hidden events are the part-of-speech tags for these words.
 - The observed events are considered as causal factors in this probabilistic model.
 
+$$
+Q = q_1q_2\dots q_N\qquad
+$$ 
+$Q$ is a set of N **states**.
+$$
+A = \left(\begin{matrix}
+    a_{11}&\dots&a_{1N}\\
+    \vdots&\ddots\\
+    a_{N1}&\dots&a_{NN}
+\end{matrix}\right)\qquad
+$$
+$A$ is **transition probability matrix** A, each $a_{ij}$ representing the probability of moving from state $i$ to state $j$, s.t. $\sum_{j=1}^na_{ij} = 1\quad \forall i$
+$$
+O = o_1o_2\dots o_T
+$$
+$O$ is a sequence of $T$ **observations**, each one drawn from a vocabulary $V = v_1v_2\dots v_V$
 
+$$
+B = b_i(o_t)
+$$
+$B$ is a sequence of **observation likelihoods**, also called **emission probabilities**, each expressing the probability of an observation $o_t$ being generated from a state $q_i$.
+
+$$
+\pi = \pi_1, \pi_2, \dots, \pi_N
+$$
+$\pi$ is the initial probability distribution over states. $\pi_i$ is the probability that the Markov chain will start in state $i$. Some states $j$ may have $\pi_i = 0$, meaning that they cannot be initial states. Also, $\sum_{i=1}^n\pi_i = 1$.
+
+A first-order hidden Markov model instantiates two simplifying assumptions:
+
+**Markov Assumption**: the probability of a particular state depends only on the previous state
+$$
+P(q_i=a|q_1q_2\dots q_{i-1}) = P(q_i=a|q_{i-1})
+$$
+**Output Independence Assumption**: the probability of an output observation $o_i$ depends only on the state $q_i$ that produced the observation and not on any other states or any otehr observations
+$$
+P(o_i|q_1,\dots, q_T; o_1,\dots, o_T) = P(o_i|q_i)
+$$
+
+**Decoding**: For any model, such as an HMM, that contains hidden variables, the task of determining the hidden variables sequence corresponding to the sequence of observations is called decoding.
 
 # Named Entity Recognition

@@ -16,6 +16,7 @@ categories:
     - [POS Tagging in probabilistic view:](#pos-tagging-in-probabilistic-view)
     - [Markov Chains](#markov-chains)
     - [Hidden Markov Model](#hidden-markov-model)
+    - [POS tagging with HMM](#pos-tagging-with-hmm)
 - [Named Entity Recognition](#named-entity-recognition)
 
 # POS and NER: Sequence Labeling
@@ -152,4 +153,19 @@ $$
 
 **Decoding**: For any model, such as an HMM, that contains hidden variables, the task of determining the hidden variables sequence corresponding to the sequence of observations is called decoding.
 
+### POS tagging with HMM
+Out of all possible sequences of $n$ tags $t_1\dots t_n$ the single tag sequence such that $P(t_1\dots t_n|w_1\dots w_n)$  is highest.
+$$
+\hat{t}_{1:n} = \arg \max_{t_{1:n}}P(t_{1:n}|w_{1:n})
+$$
+where the $\hat{t}$ means **our estimate** of the best one.
+
+Use Bayes rule $P(y|x) = \frac{P(x|y)P(y)}{P(x)}$ to transform this equation into a set of other probabilities that are easier to compute:
+$$
+\hat{t}_{1:n} = \arg \max_{t_{1:n}}P(t_{1:n}|w_{1:n}) = \arg \max_{t_{1:n}}\frac{P(w_{1:n}|t_{1:n})P(t_{1:n})}{P(w_{1:n})} = \arg\max_{t_{1:n}}P(w_{1:n}|t_{1:n})P(t_{1:n})
+$$
+Applying the two assumptions of HMM, we can get:
+$$
+\hat{t}_{1:n} = \arg\max_{t_{1:n}}\prod_{i=1}^nP(w_i|t_i)P(t_i|t_{i-1})
+$$
 # Named Entity Recognition

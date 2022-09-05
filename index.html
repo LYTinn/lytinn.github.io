@@ -212,7 +212,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:16:31" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:34:10" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,8 +245,7 @@
 </li>
 <li><a href="#pos-tagging">POS Tagging</a>
 <ul>
-<li><a href="#closed-classes">Closed classes</a></li>
-<li><a href="#open-classes">Open classes</a></li>
+<li><a href="#why-pos-tagging-is-challenging">Why POS tagging is challenging?</a></li>
 </ul>
 </li>
 </ul>
@@ -265,10 +264,28 @@
 <h1 id="pos-tagging"><a class="markdownIt-Anchor" href="#pos-tagging"></a> POS Tagging</h1>
 <p>There are multiple POS tagsets defined. For example, the following are 17 parts of speech in the Universal Dependecies tagset.<br />
 <img src="../figures/POStagging.png" alt="pos tagging" /></p>
-<h2 id="closed-classes"><a class="markdownIt-Anchor" href="#closed-classes"></a> Closed classes</h2>
-<p>Closed classes are those with relatively <strong>fixed membership</strong>, such as prepositions; new prepositions are rarely coined.</p>
+<p><strong>Closed classes</strong> are those with relatively <strong>fixed membership</strong>, such as prepositions; new prepositions are rarely coined.</p>
 <p>Closed class words are generally <strong>function words</strong> (e.g. of, it, and) which tend to be very short, occur frequently, and often have structuring uses in grammar.</p>
-<h2 id="open-classes"><a class="markdownIt-Anchor" href="#open-classes"></a> Open classes</h2>
+<p>Nouns and verbs are maong <strong>open classes</strong>; new nouns and verbs like <em>iPhone</em> or <em>fax</em> are continually being created or borrowed.</p>
+<p><strong>Prepositions</strong> indicate spatial ot temporal relations, and relations.</p>
+<p><strong>Determiners</strong> like <em>this</em> and <em>that</em> can mark the start of article English noun phrase.</p>
+<p><strong>Pronouns</strong> acts as a shorthand for referring to an entity or event.</p>
+<ul>
+<li><strong>Persional pronouns</strong> refer to person or entities (you, she, I, it, me, etc.)</li>
+<li><strong>Possessive pronouns</strong> are forms of personal pronouns that indicate either actual possession ot more often just an abstract relation between the person and some object (my, your, his, her, its, one’s, our, their, etc.)</li>
+<li><strong>Wh-pronouns</strong> (What, who, whom, whoever, etc.) are used in certain question forms, or act as complementizers.</li>
+</ul>
+<p>The 45-tag Penn Treebanc tagset is another tagset example.<br />
+<img src="../figures/45-tag.png" alt="45-tag" /></p>
+<p>Part-of-speech tagging is the process of assigning a part-of-speech to each word in a text.</p>
+<h2 id="why-pos-tagging-is-challenging"><a class="markdownIt-Anchor" href="#why-pos-tagging-is-challenging"></a> Why POS tagging is challenging?</h2>
+<p>Words are <strong>ambiguous</strong> – have more than one possible part-of-speech. And the example words may contain multiple parts-of-speech. For example:</p>
+<blockquote>
+<p><strong>Book</strong> that flight; Hand me that <strong>book</strong>.</p>
+</blockquote>
+<blockquote>
+<p>The <strong>back</strong> door; On my <strong>back</strong>; Win the voters <strong>back</strong>; Promised to <strong>back</strong> the bill.</p>
+</blockquote>
 
       
     </div>

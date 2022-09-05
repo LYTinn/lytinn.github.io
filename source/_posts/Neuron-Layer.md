@@ -2,7 +2,7 @@
 title: Basic MLP
 date: 2022-09-04 09:00:58
 tags: 
-- MLP
+- Neuron Layer
 categories:
 - Deep Learning
 ---
@@ -21,6 +21,10 @@ categories:
 - [Softmax Layer](#softmax-layer)
   - [SGD for softmax layer](#sgd-for-softmax-layer)
   - [GD for softmax layer](#gd-for-softmax-layer)
+  - [Conclusion for softmax layer](#conclusion-for-softmax-layer)
+- [Initialization of weights](#initialization-of-weights)
+  - [Initialization from a uniform distribution](#initialization-from-a-uniform-distribution)
+  - [Initialization from a truncated normal distribution](#initialization-from-a-truncated-normal-distribution)
 
 # Neuron Layer
 A Layer of perceptrons performs **multidimensional linear regression** and learns a multidimensional linear mapping:
@@ -354,3 +358,70 @@ where $\mathbf{k} = (1\quad2\quad\dots\quad K)^T$
 Note that $1(\mathbf{k} = d)$ is a one-hot vector where the element corresponding to the target label $d$ is "1" and elsewhere is "0".
 
 ## GD for softmax layer
+Given a set of patterns $\{(\mathbf{x}_p, d_p)\}_{p=1}^P$ where $\mathbf{x}_p\in \mathbb{R}^n$ and $d_p\in \{1,2,\dots,K\}$.
+
+The cost function of the *softmax layer* is given by the *multiclass cross-entropy*:
+$$
+J = -\sum_{p=1}^P\left(\sum_{k=1}^K 1(d=k)log(f(u_k))\right)
+$$
+where $u_{pk}$ is the synaptic input to the $k$ neuron for input $\mathbf{x}_p$. The cost function $J$ can also be written as
+$$
+J = -\sum_{p=1}^P\log(f(u_{p{d_p}})) = \sum_{p=1}^P J_p
+$$
+where $J_p = -\log(f(u_{pd_p}))$ is the cross-entropy for the $p$th pattern.
+$$
+\nabla_\mathbf{U}J = \left(\begin{matrix}
+    (\nabla_{\mathbf{u}_1}J)^T\\
+    (\nabla_{\mathbf{u}_2}J)^T\\
+    \vdots\\
+    (\nabla_{\mathbf{u}_P}J)^T
+\end{matrix}\right) = \left(\begin{matrix}
+    (\nabla_{\mathbf{u}_1}J_1)^T\\
+    (\nabla_{\mathbf{u}_2}J_2)^T\\
+    \vdots\\
+    (\nabla_{\mathbf{u}_P}J_P)^T
+\end{matrix}\right) = \left(\begin{matrix}
+    (1(\mathbf{k}=d_1) - f(\mathbf{u}_1))^T\\
+    (1(\mathbf{k}=d_2) - f(\mathbf{u}_2))^T\\
+    \vdots\\
+    (1(\mathbf{k}=d_K) - f(\mathbf{u}_K))^T
+\end{matrix}\right)
+$$
+$$
+\nabla_\mathbf{U}J = -(\mathbf{K} - f(\mathbf{U}))
+$$
+where $K = \left(\begin{matrix}
+    1(\mathbf(k)=d_1)^T\\
+    1(\mathbf(k)=d_2)^T\\
+    \vdots\\
+    1(\mathbf(k)=d_P)^T
+\end{matrix}\right)$ is a matrix with every row is a one-hot vector.
+## Conclusion for softmax layer
+![Softmax](../figures/softmax.png)
+# Initialization of weights
+Random initialization is inefficient. At the initialization, it is desirable that weights are small and near zero
+- to operate in the linear region of the activation function
+- to preserve the variance of activations and gradients
+
+Two methods:
+- Using a uniform distribution within specified limits
+- Using a truncated normal distribution
+
+## Initialization from a uniform distribution
+For sigmoid activations:
+$$
+w \sim Uniform\left[-\frac{4\sqrt{6}}{\sqrt{n_{in} + n_{out}}}, +\frac{4\sqrt{6}}{\sqrt{n_{in} + n_{out}}}\right]
+$$
+For others:
+$$
+w \sim Uniform\left[-\frac{\sqrt{6}}{\sqrt{n_{in} + n_{out}}}, +\frac{\sqrt{6}}{\sqrt{n_{in} + n_{out}}}\right]
+$$
+where $n_{in}$ is the number of input nodes and $n_{out}$ is the number of neurons in the layer.
+
+$Uniform$ draws a uniformly distributed number within limits.
+
+## Initialization from a truncated normal distribution
+$$
+w\sim truncated\_normal\left[mean=0, std=\frac{1}{\sqrt{n_{in}}}\right]
+$$
+In the truncated normal, the samples that are two s.d. away from the center are discarded and resampled again.

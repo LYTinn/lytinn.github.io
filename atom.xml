@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-09-05T07:14:43.616Z</updated>
+  <updated>2022-09-05T13:09:58.372Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Neuron Layer Tutorial</title>
+    <link href="http://example.com/2022/09/05/Neuron-Layer-Tutorial/"/>
+    <id>http://example.com/2022/09/05/Neuron-Layer-Tutorial/</id>
+    <published>2022-09-05T13:04:55.000Z</published>
+    <updated>2022-09-05T13:09:58.372Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><a href="#example-1">Example 1</a></li><li><a href="#example-2">Example 2</a></li><li><a href="#example-3">Example 3</a></li><li><a href="#example-4">Example 4</a></li><li><a href="#tutorial-q1">Tutorial Q1</a><ul><li><a href="#a">(a)</a></li><li><a href="#b">(b)</a></li><li><a href="#c">©</a></li><li><a href="#d">(d)</a></li></ul></li><li><a href="#tutorial-q2">Tutorial Q2</a></li><li><a href="#tutorial-q3">Tutorial Q3</a></li></ul><h1 id="example-1"><a class="markdownIt-Anchor" href="#example-1"></a> Example 1</h1><h1 id="example-2"><a class="markdownIt-Anchor" href="#example-2"></a> Example 2</h1><h1 id="example-3"><a class="markdownIt-Anchor" href="#example-3"></a> Example 3</h1><h1 id="example-4"><a class="markdownIt-Anchor" href="#example-4"></a> Example 4</h1><h1 id="tutorial-q1"><a class="markdownIt-Anchor" href="#tutorial-q1"></a> Tutorial Q1</h1><h2 id="a"><a class="markdownIt-Anchor" href="#a"></a> (a)</h2><h2 id="b"><a class="markdownIt-Anchor" href="#b"></a> (b)</h2><h2 id=""><a class="markdownIt-Anchor" href="#"></a> ©</h2><h2 id="d"><a class="markdownIt-Anchor" href="#d"></a> (d)</h2><h1 id="tutorial-q2"><a class="markdownIt-Anchor" href="#tutorial-q2"></a> Tutorial Q2</h1><h1 id="tutorial-q3"><a class="markdownIt-Anchor" href="#tutorial-q3"></a> Tutorial Q3</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#example-1&quot;&gt;Example 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#example-2&quot;&gt;Example 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#example-3&quot;&gt;Example 3&lt;/a&gt;&lt;/li&gt;
+&lt;li</summary>
+      
+    
+    
+    
+    <category term="Deep Learning" scheme="http://example.com/categories/Deep-Learning/"/>
+    
+    
+    <category term="tutorial" scheme="http://example.com/tags/tutorial/"/>
+    
+    <category term="Neuron Layer" scheme="http://example.com/tags/Neuron-Layer/"/>
+    
+  </entry>
   
   <entry>
     <title>Sentiment Analysis paper read</title>

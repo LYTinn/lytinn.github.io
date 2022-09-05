@@ -13,6 +13,9 @@ categories:
 - [POS Tagging](#pos-tagging)
   - [Why POS tagging is challenging?](#why-pos-tagging-is-challenging)
   - [POS Tagging with Hidden Markov Model (HMM)](#pos-tagging-with-hidden-markov-model-hmm)
+    - [POS Tagging in probabilistic view:](#pos-tagging-in-probabilistic-view)
+    - [Markov Chains](#markov-chains)
+    - [Hidden Markov Model](#hidden-markov-model)
 - [Named Entity Recognition](#named-entity-recognition)
 
 # POS and NER: Sequence Labeling
@@ -68,5 +71,47 @@ Here, we won't discuss tagging algorithm in detail. We will focus on predicting 
 A sequence labeler assigns a label to each unit (e.g. word) in a sequence (i.e. sentence), thus mapping a sequence of observations to a sequence of labels of the same length.
 
 The HMM is a classic probabilitic sequence model. Given a sequence of words, it computes a probability distribution over possible sequences of labels and chooses that best label sequence.
+
+### POS Tagging in probabilistic view:
+- Consider all possible sequences of tag (each tag for one word)
+- Out of this universe of sequences, choose the tag sequence which is most probable given the observation sequence of $n$ words $w_1\dots w_n$.
+
+### Markov Chains
+The HMM is based on augmenting the **Markov chain**. A Markov chain is a model on the probabilities of sequences of random variables (or states), each of which can take on values from some set. These sets can be tags, words, or symbols representing anything. For example, a set of possible weather states includes HOT, COLD, WARM.
+
+Markov assumption: The probability of next state only depends on the current state, e.g. predict tomorrow's weather only based on todays' weather.
+
+$$
+P(q_i = a | q_1\dots q_{i-1}) = P(q_i = a|q_{i-1})
+$$
+where $q_1\dots q_{i-1}$ is a sequence of states. The probability of next state $q_i=a$ only depends on the state $q_{i-1}$.
+
+$$
+Q = q_1q_2\dots q_N\qquad
+$$ 
+$Q$ is a set of N **states**.
+$$
+A = \left(\begin{matrix}
+    a_{11}&\dots&a_{1N}\\
+    \vdots&\ddots\\
+    a_{N1}&\dots&a_{NN}
+\end{matrix}\right)\qquad
+$$
+$A$ is **transition probability matrix** A, each $a_{ij}$ representing the probability of moving from state $i$ to state $j$, s.t. $\sum_{j=1}^na_{ij} = 1\quad \forall i$
+$$
+\pi = \pi_1, \pi_2, \dots, \pi_N
+$$
+$\pi$ is the initial probability distribution over states. $\pi_i$ is the probability that the Markov chain will start in state $i$. Some states $j$ may have $\pi_i = 0$, meaning that they cannot be initial states. Also, $\sum_{i=1}^n\pi_i = 1$.
+### Hidden Markov Model
+A Markov chain is useful when we need to compute a probability for a sequence of observable events, e.g., based on today's weather to predict tomorrow's weather, and based on current word to predict next word (as in bigram model).
+
+In many cases, however, the events we are interested in are **hidden**. For example, in POS tagging, we can only observe words, but not there tags. We cannot use the current tag to predict the next tag for a word sequence. We call the tags hidden because they are not observed.
+
+A hidden Markov model (HMM) allows us to talk about both **observed events** and **hidden events**. For POS tagging:
+- Observed event are the words in the input sentence. 
+- Hidden events are the part-of-speech tags for these words.
+- The observed events are considered as causal factors in this probabilistic model.
+
+
 
 # Named Entity Recognition

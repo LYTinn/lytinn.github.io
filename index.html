@@ -212,7 +212,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:34:10" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:49:38" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,8 +246,10 @@
 <li><a href="#pos-tagging">POS Tagging</a>
 <ul>
 <li><a href="#why-pos-tagging-is-challenging">Why POS tagging is challenging?</a></li>
+<li><a href="#pos-tagging-with-hidden-markov-model-hmm">POS Tagging with Hidden Markov Model (HMM)</a></li>
 </ul>
 </li>
+<li><a href="#named-entity-recognition">Named Entity Recognition</a></li>
 </ul>
 <h1 id="pos-and-ner-sequence-labeling"><a class="markdownIt-Anchor" href="#pos-and-ner-sequence-labeling"></a> POS and NER: Sequence Labeling</h1>
 <h2 id="parts-of-speech-pos"><a class="markdownIt-Anchor" href="#parts-of-speech-pos"></a> Parts of speech (POS)</h2>
@@ -286,6 +288,12 @@
 <blockquote>
 <p>The <strong>back</strong> door; On my <strong>back</strong>; Win the voters <strong>back</strong>; Promised to <strong>back</strong> the bill.</p>
 </blockquote>
+<p>How to determine the tag of word is a hard problem, there are many algorithms discusing and trying to solve it. The accuracy of POS tagging algorithms is extremely high, about 97%. However, the most-frequent-tag baseline has an accuracy of about 92%.</p>
+<p>Here, we won’t discuss tagging algorithm in detail. We will focus on predicting and generating sentence using tags.</p>
+<h2 id="pos-tagging-with-hidden-markov-model-hmm"><a class="markdownIt-Anchor" href="#pos-tagging-with-hidden-markov-model-hmm"></a> POS Tagging with Hidden Markov Model (HMM)</h2>
+<p>A sequence labeler assigns a label to each unit (e.g. word) in a sequence (i.e. sentence), thus mapping a sequence of observations to a sequence of labels of the same length.</p>
+<p>The HMM is a classic probabilitic sequence model. Given a sequence of words, it computes a probability distribution over possible sequences of labels and chooses that best label sequence.</p>
+<h1 id="named-entity-recognition"><a class="markdownIt-Anchor" href="#named-entity-recognition"></a> Named Entity Recognition</h1>
 
       
     </div>

@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Why POS tagging is challenging?     POS and NER: Sequence Labeling  Parts of spe">
+  <meta name="description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Why POS tagging is challenging? POS Tagging with Hidden Markov Model (HMM)   Nam">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Parts of Speech and Named Entities">
 <meta property="og:url" content="http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/index.html">
 <meta property="og:site_name" content="LYTinn">
-<meta property="og:description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Why POS tagging is challenging?     POS and NER: Sequence Labeling  Parts of spe">
+<meta property="og:description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Why POS tagging is challenging? POS Tagging with Hidden Markov Model (HMM)   Nam">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/05/figures/POStagging.png">
 <meta property="og:image" content="http://example.com/2022/09/05/figures/45-tag.png">
 <meta property="article:published_time" content="2022-09-05T00:56:06.000Z">
-<meta property="article:modified_time" content="2022-09-05T01:34:10.578Z">
+<meta property="article:modified_time" content="2022-09-05T01:49:38.270Z">
 <meta property="article:author" content="Run">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:34:10" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 08:56:06 / Modified: 09:49:38" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +252,10 @@
 <li><a href="#pos-tagging">POS Tagging</a>
 <ul>
 <li><a href="#why-pos-tagging-is-challenging">Why POS tagging is challenging?</a></li>
+<li><a href="#pos-tagging-with-hidden-markov-model-hmm">POS Tagging with Hidden Markov Model (HMM)</a></li>
 </ul>
 </li>
+<li><a href="#named-entity-recognition">Named Entity Recognition</a></li>
 </ul>
 <h1 id="pos-and-ner-sequence-labeling"><a class="markdownIt-Anchor" href="#pos-and-ner-sequence-labeling"></a> POS and NER: Sequence Labeling</h1>
 <h2 id="parts-of-speech-pos"><a class="markdownIt-Anchor" href="#parts-of-speech-pos"></a> Parts of speech (POS)</h2>
@@ -292,6 +294,12 @@
 <blockquote>
 <p>The <strong>back</strong> door; On my <strong>back</strong>; Win the voters <strong>back</strong>; Promised to <strong>back</strong> the bill.</p>
 </blockquote>
+<p>How to determine the tag of word is a hard problem, there are many algorithms discusing and trying to solve it. The accuracy of POS tagging algorithms is extremely high, about 97%. However, the most-frequent-tag baseline has an accuracy of about 92%.</p>
+<p>Here, we won’t discuss tagging algorithm in detail. We will focus on predicting and generating sentence using tags.</p>
+<h2 id="pos-tagging-with-hidden-markov-model-hmm"><a class="markdownIt-Anchor" href="#pos-tagging-with-hidden-markov-model-hmm"></a> POS Tagging with Hidden Markov Model (HMM)</h2>
+<p>A sequence labeler assigns a label to each unit (e.g. word) in a sequence (i.e. sentence), thus mapping a sequence of observations to a sequence of labels of the same length.</p>
+<p>The HMM is a classic probabilitic sequence model. Given a sequence of words, it computes a probability distribution over possible sequences of labels and chooses that best label sequence.</p>
+<h1 id="named-entity-recognition"><a class="markdownIt-Anchor" href="#named-entity-recognition"></a> Named Entity Recognition</h1>
 
     </div>
 
@@ -373,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pos-and-ner-sequence-labeling"><span class="nav-number">1.</span> <span class="nav-text"> POS and NER: Sequence Labeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parts-of-speech-pos"><span class="nav-number">1.1.</span> <span class="nav-text"> Parts of speech (POS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#named-entity-recognition-ner"><span class="nav-number">1.2.</span> <span class="nav-text"> Named Entity Recognition (NER)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sequence-labeling"><span class="nav-number">1.3.</span> <span class="nav-text"> Sequence labeling:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pos-tagging"><span class="nav-number">2.</span> <span class="nav-text"> POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-pos-tagging-is-challenging"><span class="nav-number">2.1.</span> <span class="nav-text"> Why POS tagging is challenging?</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pos-and-ner-sequence-labeling"><span class="nav-number">1.</span> <span class="nav-text"> POS and NER: Sequence Labeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parts-of-speech-pos"><span class="nav-number">1.1.</span> <span class="nav-text"> Parts of speech (POS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#named-entity-recognition-ner"><span class="nav-number">1.2.</span> <span class="nav-text"> Named Entity Recognition (NER)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sequence-labeling"><span class="nav-number">1.3.</span> <span class="nav-text"> Sequence labeling:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pos-tagging"><span class="nav-number">2.</span> <span class="nav-text"> POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-pos-tagging-is-challenging"><span class="nav-number">2.1.</span> <span class="nav-text"> Why POS tagging is challenging?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pos-tagging-with-hidden-markov-model-hmm"><span class="nav-number">2.2.</span> <span class="nav-text"> POS Tagging with Hidden Markov Model (HMM)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#named-entity-recognition"><span class="nav-number">3.</span> <span class="nav-text"> Named Entity Recognition</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

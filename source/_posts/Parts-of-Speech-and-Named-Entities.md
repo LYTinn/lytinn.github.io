@@ -12,6 +12,8 @@ categories:
   - [Sequence labeling:](#sequence-labeling)
 - [POS Tagging](#pos-tagging)
   - [Why POS tagging is challenging?](#why-pos-tagging-is-challenging)
+  - [POS Tagging with Hidden Markov Model (HMM)](#pos-tagging-with-hidden-markov-model-hmm)
+- [Named Entity Recognition](#named-entity-recognition)
 
 # POS and NER: Sequence Labeling
 ## Parts of speech (POS) 
@@ -58,3 +60,13 @@ Words are **ambiguous** -- have more than one possible part-of-speech. And the e
 
 > The **back** door; On my **back**; Win the voters **back**; Promised to **back** the bill.
 
+How to determine the tag of word is a hard problem, there are many algorithms discusing and trying to solve it. The accuracy of POS tagging algorithms is extremely high, about 97%. However, the most-frequent-tag baseline has an accuracy of about 92%.
+
+Here, we won't discuss tagging algorithm in detail. We will focus on predicting and generating sentence using tags.
+
+## POS Tagging with Hidden Markov Model (HMM)
+A sequence labeler assigns a label to each unit (e.g. word) in a sequence (i.e. sentence), thus mapping a sequence of observations to a sequence of labels of the same length.
+
+The HMM is a classic probabilitic sequence model. Given a sequence of words, it computes a probability distribution over possible sequences of labels and chooses that best label sequence.
+
+# Named Entity Recognition

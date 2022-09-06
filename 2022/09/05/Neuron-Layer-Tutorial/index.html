@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="LYTinn">
 <meta property="og:description" content="Example 1 Output of perceptron layer Example 2 GD of a softmax classification Example 3 Softmax classification of iris data Example 4 GD of a perceptron layer Tutorial Q1  a b c d   Tutorial Q2 Tutor">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.2_1.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.2_2.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.2_3.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.2_1.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.2_2.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/GD-perceptron-layer.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.4_1.png">
-<meta property="og:image" content="http://example.com/public/figures/dl_tutorial3/3.4_2.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.2_1.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.2_2.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.2_3.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.2_1.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.2_2.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/GD-perceptron-layer.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.4_1.png">
+<meta property="og:image" content="http://example.com/figures/dl_tutorial3/3.4_2.png">
 <meta property="article:published_time" content="2022-09-05T13:04:55.000Z">
-<meta property="article:modified_time" content="2022-09-06T04:15:37.550Z">
+<meta property="article:modified_time" content="2022-09-06T04:25:28.027Z">
 <meta property="article:author" content="Run">
 <meta property="article:tag" content="tutorial">
 <meta property="article:tag" content="Neuron Layer">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/public/figures/dl_tutorial3/3.2_1.png">
+<meta name="twitter:image" content="http://example.com/figures/dl_tutorial3/3.2_1.png">
 
 <link rel="canonical" href="http://example.com/2022/09/05/Neuron-Layer-Tutorial/">
 
@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-06 12:15:37" itemprop="dateModified" datetime="2022-09-06T12:15:37+08:00">2022-09-06</time>
+                <time title="Modified: 2022-09-06 12:25:28" itemprop="dateModified" datetime="2022-09-06T12:25:28+08:00">2022-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -428,11 +428,11 @@ epoch:2900, loss:0.5781826364208404, error:0</p>
 loss: 0.5635695814410673</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">1</span>)</span><br><span class="line">plot_pred = plt.plot(X[Y==<span class="number">0</span>,<span class="number">0</span>], X[Y==<span class="number">0</span>,<span class="number">1</span>], <span class="string">&#x27;b^&#x27;</span>, label=<span class="string">&#x27;class 1&#x27;</span>)</span><br><span class="line">plot_original = plt.plot(X[Y==<span class="number">1</span>,<span class="number">0</span>], X[Y==<span class="number">1</span>,<span class="number">1</span>], <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;class 2&#x27;</span>)</span><br><span class="line">plot_original = plt.plot(X[Y==<span class="number">2</span>,<span class="number">0</span>], X[Y==<span class="number">2</span>,<span class="number">1</span>], <span class="string">&#x27;gx&#x27;</span>, label=<span class="string">&#x27;class 3&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x_1$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$x_2$&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;data points&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.2_1.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/figures/dl_tutorial3/3.2_1.png" alt="3.21" /></p>
+<p><img src="/figures/dl_tutorial3/3.2_1.png" alt="3.21" /></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(num_epochs), loss_)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epochs&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;cross-entropy&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.2_2.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/figures/dl_tutorial3/3.2_2.png" alt="3.22" /></p>
+<p><img src="/figures/dl_tutorial3/3.2_2.png" alt="3.22" /></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">3</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(num_epochs), err_)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epochs&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;classification error&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.2_3.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/figures/dl_tutorial3/3.2_3.png" alt="3.23" /></p>
+<p><img src="/figures/dl_tutorial3/3.2_3.png" alt="3.23" /></p>
 <h1 id="example-3-softmax-classification-of-iris-data"><a class="markdownIt-Anchor" href="#example-3-softmax-classification-of-iris-data"></a> Example 3 Softmax classification of iris data</h1>
 <p>Iris data has three classes of iris flower. There are four features:</p>
 <ul>
@@ -493,11 +493,11 @@ test error=  3</p>
 [-2.38732752e+00 -2.88848158e+00  5.17256527e+00]], b: [-0.98272709  5.52615415 -4.54342706]</p>
 </blockquote>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># plot learning curves</span></span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(no_epochs), entropy)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epochs&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;cross-entropy&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.3_1.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">3</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(no_epochs), np.array(err))</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epochs&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;classification error&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.3_2.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/figures/dl_tutorial3/3.2_1.png" alt="3.21" /><br />
-<img src="/public/figures/dl_tutorial3/3.2_2.png" alt="3.22" /></p>
+<p><img src="/figures/dl_tutorial3/3.2_1.png" alt="3.21" /><br />
+<img src="/figures/dl_tutorial3/3.2_2.png" alt="3.22" /></p>
 <h1 id="example-4-gd-of-a-perceptron-layer"><a class="markdownIt-Anchor" href="#example-4-gd-of-a-perceptron-layer"></a> Example 4 GD of a perceptron layer</h1>
 <p>Design a perceptron layer to perform the following mapping using GD learning and learning rate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\alpha=0.1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span></span></span></span>:<br />
-<img src="/public/figures/dl_tutorial3/GD-perceptron-layer.png" alt="GD of a perceptron layer" /></p>
+<img src="/figures/dl_tutorial3/GD-perceptron-layer.png" alt="GD of a perceptron layer" /></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set the parameter for the layer and training</span></span><br><span class="line">no_features = <span class="number">3</span></span><br><span class="line">no_labels = <span class="number">2</span></span><br><span class="line">no_data = <span class="number">8</span></span><br><span class="line"></span><br><span class="line">lr = <span class="number">0.1</span></span><br><span class="line">no_iters = <span class="number">10000</span></span><br><span class="line"></span><br><span class="line">SEED = <span class="number">10</span></span><br><span class="line">np.random.seed(SEED)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># generate training data</span></span><br><span class="line">X = np.random.rand(no_data, no_features)</span><br><span class="line">Y = np.zeros((no_data, no_labels))</span><br><span class="line">Y[:,<span class="number">0</span>] = (X[:,<span class="number">0</span>] + X[:,<span class="number">1</span>]**<span class="number">2</span> + X[:, <span class="number">2</span>]**<span class="number">3</span> + np.random.rand(no_data))/<span class="number">4</span></span><br><span class="line">Y[:,<span class="number">1</span>] = (X[:,<span class="number">0</span>] + X[:,<span class="number">1</span>] + X[:, <span class="number">2</span>] + X[:,<span class="number">0</span>]*X[:,<span class="number">1</span>]*X[:,<span class="number">2</span>] + np.random.rand(no_data))/<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;X = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(X))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Y = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(Y))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;alpha = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(lr))</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -710,9 +710,9 @@ w: [[1.08203095 1.14034734]<br />
 loss:0.0028114152401259125</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plot learning curves</span></span><br><span class="line">plt.figure(<span class="number">1</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(no_iters), cost)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;iterations&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;mean square error&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;gd with alpha = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(lr))</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.4_1.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/figures/dl_tutorial3/3.4_1.png" alt="3.4.1" /></p>
+<p><img src="/figures/dl_tutorial3/3.4_1.png" alt="3.4.1" /></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">_, pred = model(X)</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line">plot_targets = plt.plot(Y[:,<span class="number">0</span>], Y[:,<span class="number">1</span>], <span class="string">&#x27;b^&#x27;</span>, label=<span class="string">&#x27;targets&#x27;</span>)</span><br><span class="line">plot_pred = plt.plot(pred[:,<span class="number">0</span>], pred[:,<span class="number">1</span>], <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;predicted&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$y_1$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y_2$&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;gd outputs&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.4_2.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/public/figures/dl_tutorial3/3.4_2.png" alt="3.4.2" /></p>
+<p><img src="/figures/dl_tutorial3/3.4_2.png" alt="3.4.2" /></p>
 <h1 id="tutorial-q1"><a class="markdownIt-Anchor" href="#tutorial-q1"></a> Tutorial Q1</h1>
 <h2 id="a"><a class="markdownIt-Anchor" href="#a"></a> a</h2>
 <h2 id="b"><a class="markdownIt-Anchor" href="#b"></a> b</h2>

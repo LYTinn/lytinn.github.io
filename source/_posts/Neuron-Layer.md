@@ -31,7 +31,7 @@ A Layer of perceptrons performs **multidimensional linear regression** and learn
 $$\phi: \mathbb{R}^n \rightarrow\mathbb{R}^K$$
 ## Weight matrix of a layer
 Consider a layer of K neurons:
-![K neurons](../figures/K%20neurons.png)
+![K neurons](/public/figures/K%20neurons.png)
 
 Let $\mathbf{W_k}$ and $b_k$ denote the weight vector and bias of $k$ th neuron. Weights connected to a neuron layer is represented by a weight matrix $\mathbf{W}$ where the columns are given by weight vectors of individual neurons:
 $$\mathbf{W} = (\mathbf{w_1}\quad\mathbf{w_2}\quad\dots\quad\mathbf{w_k})$$
@@ -104,7 +104,7 @@ where activation of each pattern is written as rows.
 
 ## SGD for single layer
 Computational graph for processing input $(\mathbf{x}, \mathbf{d})$:
-![SGD for single layer](../figures/SGD-for-single-layer.png)
+![SGD for single layer](/public/figures/SGD-for-single-layer.png)
 
 $J$ denotes the cost function. Now, we need to compute gradients $\nabla_\mathbf{W}J$ and $\nabla_\mathbf{b}J$ to learn the weight matrix $\mathbf{W}$ and the bias vector $\mathbf{b}$.
 
@@ -195,7 +195,7 @@ where $\mathbf{1}_P = (1, 1, \dots, 1)^T$ is a vector of $P$ ones.
 That is, by computing gradient $\nabla_\mathbf{U}J$ with respect to synaptic input, the weights and biases can be updated.
 
 ## Conclusion for Neuron Layer
-![neuron layer](../figures/linear_learning.png)
+![neuron layer](/public/figures/linear_learning.png)
 
 # Perceptron Layer
 A layer of perceptrons performs **multidimensional non-linear regression** and learns a multidimensional non-linear mapping:
@@ -278,7 +278,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 ## Conclusion for Perceptron Layer
-![perceptron layer](../figures/perceptron%20layer.png)
+![perceptron layer](/public/figures/perceptron%20layer.png)
 
 # Softmax Layer
 Softmax layer is the extension of logistic regression to **multiclass classification** problem, which is also known as *multinomial logistic regression*.
@@ -397,7 +397,7 @@ where $K = \left(\begin{matrix}
     1(\mathbf(k)=d_P)^T
 \end{matrix}\right)$ is a matrix with every row is a one-hot vector.
 ## Conclusion for softmax layer
-![Softmax](../figures/softmax.png)
+![Softmax](/public/figures/softmax.png)
 # Initialization of weights
 Random initialization is inefficient. At the initialization, it is desirable that weights are small and near zero
 - to operate in the linear region of the activation function

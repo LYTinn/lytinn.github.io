@@ -313,7 +313,7 @@ plt.title('data points')
 plt.legend()
 plt.savefig('./figures/3.2_1.png')
 ```
-![3.21](/public/figures/dl_tutorial3/3.2_1.png)
+![3.21](/figures/dl_tutorial3/3.2_1.png)
 ```python
 plt.figure(2)
 plt.plot(range(num_epochs), loss_)
@@ -321,7 +321,7 @@ plt.xlabel('epochs')
 plt.ylabel('cross-entropy')
 plt.savefig('./figures/3.2_2.png')
 ```
-![3.22](/public/figures/dl_tutorial3/3.2_2.png)
+![3.22](/figures/dl_tutorial3/3.2_2.png)
 ```python
 plt.figure(3)
 plt.plot(range(num_epochs), err_)
@@ -329,7 +329,7 @@ plt.xlabel('epochs')
 plt.ylabel('classification error')
 plt.savefig('./figures/3.2_3.png')
 ```
-![3.23](/public/figures/dl_tutorial3/3.2_3.png)
+![3.23](/figures/dl_tutorial3/3.2_3.png)
 # Example 3 Softmax classification of iris data
 Iris data has three classes of iris flower. There are four features:
 - Sepal length
@@ -478,11 +478,11 @@ plt.xlabel('epochs')
 plt.ylabel('classification error')
 plt.savefig('./figures/3.3_2.png')
 ```
-![3.21](/public/figures/dl_tutorial3/3.2_1.png)
-![3.22](/public/figures/dl_tutorial3/3.2_2.png)
+![3.21](/figures/dl_tutorial3/3.2_1.png)
+![3.22](/figures/dl_tutorial3/3.2_2.png)
 # Example 4 GD of a perceptron layer
 Design a perceptron layer to perform the following mapping using GD learning and learning rate $\alpha=0.1$:
-![GD of a perceptron layer](/public/figures/dl_tutorial3/GD-perceptron-layer.png)
+![GD of a perceptron layer](/figures/dl_tutorial3/GD-perceptron-layer.png)
 ```python
 # set the parameter for the layer and training
 no_features = 3
@@ -778,7 +778,7 @@ plt.ylabel('mean square error')
 plt.title('gd with alpha = {}'.format(lr))
 plt.savefig('./figures/3.4_1.png')
 ```
-![3.4.1](/public/figures/dl_tutorial3/3.4_1.png)
+![3.4.1](/figures/dl_tutorial3/3.4_1.png)
 ```python
 _, pred = model(X)
 
@@ -791,7 +791,7 @@ plt.title('gd outputs')
 plt.legend()
 plt.savefig('./figures/3.4_2.png')
 ```
-![3.4.2](/public/figures/dl_tutorial3/3.4_2.png)
+![3.4.2](/figures/dl_tutorial3/3.4_2.png)
 
 # Tutorial Q1
 ## a

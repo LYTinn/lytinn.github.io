@@ -36,7 +36,7 @@ NEs are useful clues to sentence structure and meaning understanding. Knowing if
 
 # POS Tagging
 There are multiple POS tagsets defined. For example, the following are 17 parts of speech in the Universal Dependecies tagset.
-![pos tagging](/public/figures/POStagging.png)
+![pos tagging](/figures/POStagging.png)
 
 **Closed classes** are those with relatively **fixed membership**, such as prepositions; new prepositions are rarely coined.
 
@@ -54,7 +54,7 @@ Nouns and verbs are maong **open classes**; new nouns and verbs like *iPhone* or
 - **Wh-pronouns** (What, who, whom, whoever, etc.) are used in certain question forms, or act as complementizers.
 
 The 45-tag Penn Treebanc tagset is another tagset example.
-![45-tag](/public/figures/45-tag.png)
+![45-tag](/figures/45-tag.png)
 
 Part-of-speech tagging is the process of assigning a part-of-speech to each word in a text.
 

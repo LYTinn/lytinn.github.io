@@ -278,7 +278,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 ## Conclusion for Perceptron Layer
-![perceptron layer](/public/figures/perceptron%20layer.png)
+![perceptron layer](/figures/perceptron%20layer.png)
 
 # Softmax Layer
 Softmax layer is the extension of logistic regression to **multiclass classification** problem, which is also known as *multinomial logistic regression*.
@@ -397,7 +397,7 @@ where $K = \left(\begin{matrix}
     1(\mathbf(k)=d_P)^T
 \end{matrix}\right)$ is a matrix with every row is a one-hot vector.
 ## Conclusion for softmax layer
-![Softmax](/public/figures/softmax.png)
+![Softmax](/figures/softmax.png)
 # Initialization of weights
 Random initialization is inefficient. At the initialization, it is desirable that weights are small and near zero
 - to operate in the linear region of the activation function

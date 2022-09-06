@@ -794,7 +794,13 @@ plt.savefig('./figures/3.4_2.png')
 ![3.4.2](/figures/dl_tutorial3/3.4_2.png)
 
 # Tutorial Q1
+Train a softmax layer of neurons to perform the following classification, given the inputs $\mathbf{x} = (x_1, x_2)$ and target class labels $d$:
+
+![Question 1](/figures/dl_tutorial3/Q1.png)
 ## a
+Show on iteration of gradient descent learning at a learning factor 0.05. Initialize the weight to $\left(\begin{matrix}
+    0.88&0.08&-0.34\\0.68&-0.39&-0.19
+\end{matrix}\right)$ and biases to zero.
 ## b
 ## c
 ## d

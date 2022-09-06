@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="LYTinn">
 <meta property="og:description" content="POS and NER: Sequence Labeling  Parts of speech (POS) Named Entity Recognition (NER) Sequence labeling:   POS Tagging  Why POS tagging is challenging? POS Tagging with Hidden Markov Model (HMM)  POS">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/09/05/figures/POStagging.png">
-<meta property="og:image" content="http://example.com/2022/09/05/figures/45-tag.png">
+<meta property="og:image" content="http://example.com/public/figures/POStagging.png">
+<meta property="og:image" content="http://example.com/public/figures/45-tag.png">
 <meta property="article:published_time" content="2022-09-05T00:56:06.000Z">
-<meta property="article:modified_time" content="2022-09-05T08:41:28.083Z">
+<meta property="article:modified_time" content="2022-09-06T04:16:45.642Z">
 <meta property="article:author" content="Run">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/09/05/figures/POStagging.png">
+<meta name="twitter:image" content="http://example.com/public/figures/POStagging.png">
 
 <link rel="canonical" href="http://example.com/2022/09/05/Parts-of-Speech-and-Named-Entities/">
 
@@ -216,10 +216,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-05 08:56:06 / Modified: 16:41:28" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 08:56:06" itemprop="dateCreated datePublished" datetime="2022-09-05T08:56:06+08:00">2022-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-06 12:16:45" itemprop="dateModified" datetime="2022-09-06T12:16:45+08:00">2022-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -278,7 +284,7 @@
 </ul>
 <h1 id="pos-tagging"><a class="markdownIt-Anchor" href="#pos-tagging"></a> POS Tagging</h1>
 <p>There are multiple POS tagsets defined. For example, the following are 17 parts of speech in the Universal Dependecies tagset.<br />
-<img src="../figures/POStagging.png" alt="pos tagging" /></p>
+<img src="/public/figures/POStagging.png" alt="pos tagging" /></p>
 <p><strong>Closed classes</strong> are those with relatively <strong>fixed membership</strong>, such as prepositions; new prepositions are rarely coined.</p>
 <p>Closed class words are generally <strong>function words</strong> (e.g. of, it, and) which tend to be very short, occur frequently, and often have structuring uses in grammar.</p>
 <p>Nouns and verbs are maong <strong>open classes</strong>; new nouns and verbs like <em>iPhone</em> or <em>fax</em> are continually being created or borrowed.</p>
@@ -291,7 +297,7 @@
 <li><strong>Wh-pronouns</strong> (What, who, whom, whoever, etc.) are used in certain question forms, or act as complementizers.</li>
 </ul>
 <p>The 45-tag Penn Treebanc tagset is another tagset example.<br />
-<img src="../figures/45-tag.png" alt="45-tag" /></p>
+<img src="/public/figures/45-tag.png" alt="45-tag" /></p>
 <p>Part-of-speech tagging is the process of assigning a part-of-speech to each word in a text.</p>
 <h2 id="why-pos-tagging-is-challenging"><a class="markdownIt-Anchor" href="#why-pos-tagging-is-challenging"></a> Why POS tagging is challenging?</h2>
 <p>Words are <strong>ambiguous</strong> – have more than one possible part-of-speech. And the example words may contain multiple parts-of-speech. For example:</p>

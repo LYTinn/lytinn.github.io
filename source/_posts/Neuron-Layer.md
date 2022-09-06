@@ -1,5 +1,5 @@
 ---
-title: Basic MLP
+title: Neuron Layer
 date: 2022-09-04 09:00:58
 tags: 
 - Neuron Layer

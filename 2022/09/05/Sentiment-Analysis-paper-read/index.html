@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Introduction SMART  Dataset Motivation Result   Unsupervised Data Augmentation for Consistency Training  Dataset Motivation Result     Introduction In this post, we will read some top papers about se">
+  <meta name="description" content="Introduction SMART Dataset Motivation Result   Unsupervised Data Augmentation for Consistency Training Dataset Motivation Result    IntroductionIn this post, we will read some top papers about sentim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sentiment Analysis paper read">
 <meta property="og:url" content="http://example.com/2022/09/05/Sentiment-Analysis-paper-read/index.html">
 <meta property="og:site_name" content="LYTinn">
-<meta property="og:description" content="Introduction SMART  Dataset Motivation Result   Unsupervised Data Augmentation for Consistency Training  Dataset Motivation Result     Introduction In this post, we will read some top papers about se">
+<meta property="og:description" content="Introduction SMART Dataset Motivation Result   Unsupervised Data Augmentation for Consistency Training Dataset Motivation Result    IntroductionIn this post, we will read some top papers about sentim">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-05T06:03:13.000Z">
 <meta property="article:modified_time" content="2022-09-05T07:14:43.616Z">
@@ -241,41 +241,30 @@
       
         <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#smart">SMART</a>
-<ul>
+<li><a href="#smart">SMART</a><ul>
 <li><a href="#dataset">Dataset</a></li>
 <li><a href="#motivation">Motivation</a></li>
 <li><a href="#result">Result</a></li>
 </ul>
 </li>
-<li><a href="#unsupervised-data-augmentation-for-consistency-training">Unsupervised Data Augmentation for Consistency Training</a>
-<ul>
+<li><a href="#unsupervised-data-augmentation-for-consistency-training">Unsupervised Data Augmentation for Consistency Training</a><ul>
 <li><a href="#dataset-1">Dataset</a></li>
 <li><a href="#motivation-1">Motivation</a></li>
 <li><a href="#result-1">Result</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
-<p>In this post, we will read some top papers about sentiment analysis. The papers are choosen from <a target="_blank" rel="noopener" href="https://paperswithcode.com/task/sentiment-analysis">paper with code</a>.</p>
-<h1 id="smart"><a class="markdownIt-Anchor" href="#smart"></a> SMART</h1>
-<p>The <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1911.03437v5.pdf">SMART: Robust and Efficient Fine-Tuning for Pre-trained Natural Language Models through Principled Regularized Optimization</a> published in 2019 is the state-of-the -art for sentiment analysis on SST-2 Binary classification. It achieves 97.5% in accuracy.</p>
-<h2 id="dataset"><a class="markdownIt-Anchor" href="#dataset"></a> Dataset</h2>
-<p>The dataset of this paper is the <strong>Standford Sentiment Treebank (SST)</strong>. SST is a corpus with fully labeled parse trees that allows for a complete analysis of the compositional effects of sentiment in language. The corpus is based on the dataset introduced by Pang and Lee (2005) and consists of 11,855 single sentences extracted from <strong>movie reviews</strong>. It was parsed with the Stanford parser and includes a total of 215,154 unique phrases from those parse trees, each annotated by 3 human judges.</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>In this post, we will read some top papers about sentiment analysis. The papers are choosen from <a target="_blank" rel="noopener" href="https://paperswithcode.com/task/sentiment-analysis">paper with code</a>.</p>
+<h1 id="SMART"><a href="#SMART" class="headerlink" title="SMART"></a>SMART</h1><p>The <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1911.03437v5.pdf">SMART: Robust and Efficient Fine-Tuning for Pre-trained Natural Language Models through Principled Regularized Optimization</a> published in 2019 is the state-of-the -art for sentiment analysis on SST-2 Binary classification. It achieves 97.5% in accuracy.</p>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>The dataset of this paper is the <strong>Standford Sentiment Treebank (SST)</strong>. SST is a corpus with fully labeled parse trees that allows for a complete analysis of the compositional effects of sentiment in language. The corpus is based on the dataset introduced by Pang and Lee (2005) and consists of 11,855 single sentences extracted from <strong>movie reviews</strong>. It was parsed with the Stanford parser and includes a total of 215,154 unique phrases from those parse trees, each annotated by 3 human judges.</p>
 <p>Each phrase is labelled as either <em>negative, somewhat negative, neutral, somewhat positive</em> or <em>positive</em>. The corpus with all 5 labels is referred to as SST-5 or SST fine-grained. Binary classification experiments on full sentences (<em>negative</em> or <em>somewhat negative</em> vs <em>somewhat positive</em> or <em>positive</em> with <em>neutral</em> sentences discarded) refer to the dataset as SST-2 or SST binary.</p>
-<h2 id="motivation"><a class="markdownIt-Anchor" href="#motivation"></a> Motivation</h2>
-<p>When performing NLP models on downstream tasks, because of the limit fine-tuning data resources and high complexity of pre-trained model, the fine-tuning always cause overfitting.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>When performing NLP models on downstream tasks, because of the limit fine-tuning data resources and high complexity of pre-trained model, the fine-tuning always cause overfitting.</p>
 <p>The team comes up with a framework to fine-tune the pre-trained model on the downstream tasks, avoiding over-fitting and getting a better performance.</p>
-<h2 id="result"><a class="markdownIt-Anchor" href="#result"></a> Result</h2>
-<p>Achieves a new state-of-the-art performance on many NLP benchmarks like GLUE, SNLI, SciTail, ANLI.</p>
-<h1 id="unsupervised-data-augmentation-for-consistency-training"><a class="markdownIt-Anchor" href="#unsupervised-data-augmentation-for-consistency-training"></a> Unsupervised Data Augmentation for Consistency Training</h1>
-<p>The <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.12848v6.pdf">Unsupervised Data Augmentation for Consistency Training</a> published on 2019 is the state-of-the-art for sentiment analysis on Amazon Review Full. It achieves 65.83% accuracy on Amazon Review dataset.</p>
-<h2 id="dataset-2"><a class="markdownIt-Anchor" href="#dataset-2"></a> Dataset</h2>
-<p>This dataset contains product reviews and metadata from Amazon, including 233.1 million reviews spanning May 1996 - Oct 2018.</p>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p>Achieves a new state-of-the-art performance on many NLP benchmarks like GLUE, SNLI, SciTail, ANLI.</p>
+<h1 id="Unsupervised-Data-Augmentation-for-Consistency-Training"><a href="#Unsupervised-Data-Augmentation-for-Consistency-Training" class="headerlink" title="Unsupervised Data Augmentation for Consistency Training"></a>Unsupervised Data Augmentation for Consistency Training</h1><p>The <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.12848v6.pdf">Unsupervised Data Augmentation for Consistency Training</a> published on 2019 is the state-of-the-art for sentiment analysis on Amazon Review Full. It achieves 65.83% accuracy on Amazon Review dataset.</p>
+<h2 id="Dataset-1"><a href="#Dataset-1" class="headerlink" title="Dataset"></a>Dataset</h2><p>This dataset contains product reviews and metadata from Amazon, including 233.1 million reviews spanning May 1996 - Oct 2018.</p>
 <p>This dataset includes reviews (ratings, text, helpfulness votes), product metadata (descriptions, category information, price, brand, and image features), links (also viewed/also bought graphs), and transaction metadata for each review shown on the review page.</p>
-<h2 id="motivation-2"><a class="markdownIt-Anchor" href="#motivation-2"></a> Motivation</h2>
-<h2 id="result-2"><a class="markdownIt-Anchor" href="#result-2"></a> Result</h2>
-
+<h2 id="Motivation-1"><a href="#Motivation-1" class="headerlink" title="Motivation"></a>Motivation</h2><h2 id="Result-1"><a href="#Result-1" class="headerlink" title="Result"></a>Result</h2>
     </div>
 
     
@@ -360,7 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text"> Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#smart"><span class="nav-number">2.</span> <span class="nav-text"> SMART</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dataset"><span class="nav-number">2.1.</span> <span class="nav-text"> Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">2.2.</span> <span class="nav-text"> Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#result"><span class="nav-number">2.3.</span> <span class="nav-text"> Result</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unsupervised-data-augmentation-for-consistency-training"><span class="nav-number">3.</span> <span class="nav-text"> Unsupervised Data Augmentation for Consistency Training</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dataset-2"><span class="nav-number">3.1.</span> <span class="nav-text"> Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation-2"><span class="nav-number">3.2.</span> <span class="nav-text"> Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#result-2"><span class="nav-number">3.3.</span> <span class="nav-text"> Result</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SMART"><span class="nav-number">2.</span> <span class="nav-text">SMART</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset"><span class="nav-number">2.1.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result"><span class="nav-number">2.3.</span> <span class="nav-text">Result</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsupervised-Data-Augmentation-for-Consistency-Training"><span class="nav-number">3.</span> <span class="nav-text">Unsupervised Data Augmentation for Consistency Training</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset-1"><span class="nav-number">3.1.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation-1"><span class="nav-number">3.2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result-1"><span class="nav-number">3.3.</span> <span class="nav-text">Result</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

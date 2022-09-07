@@ -187,7 +187,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/Neuron-Layer-Tutorial/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/07/Neuron-Layer-Examples/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -201,7 +201,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/09/05/Neuron-Layer-Tutorial/" class="post-title-link" itemprop="url">Neuron Layer Tutorial</a>
+            <a href="/2022/09/07/Neuron-Layer-Examples/" class="post-title-link" itemprop="url">Neuron Layer Examples</a>
         </h2>
 
         <div class="post-meta">
@@ -210,16 +210,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-09-05 21:04:55" itemprop="dateCreated datePublished" datetime="2022-09-05T21:04:55+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-07 09:43:56 / Modified: 09:46:09" itemprop="dateCreated datePublished" datetime="2022-09-07T09:43:56+08:00">2022-09-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-07 09:16:24" itemprop="dateModified" datetime="2022-09-07T09:16:24+08:00">2022-09-07</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -262,35 +256,7 @@
 <li><a href="#solution-3">Solution</a></li>
 </ul>
 </li>
-<li><a href="#tutorial-q1">Tutorial Q1</a>
-<ul>
-<li><a href="#a">a</a>
-<ul>
-<li><a href="#solution-4">Solution</a></li>
 </ul>
-</li>
-<li><a href="#b">b</a>
-<ul>
-<li><a href="#solution-5">Solution</a></li>
-</ul>
-</li>
-<li><a href="#c">c</a>
-<ul>
-<li><a href="#solution-6">Solution</a></li>
-</ul>
-</li>
-<li><a href="#d">d</a>
-<ul>
-<li><a href="#solution-7">Solution</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#tutorial-q2">Tutorial Q2</a></li>
-<li><a href="#tutorial-q3">Tutorial Q3</a></li>
-</ul>
-<p>Import corresponding packages first:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(<span class="string">&#x27;figures&#x27;</span>):</span><br><span class="line">    os.makedirs(<span class="string">&#x27;figures&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">os.environ[<span class="string">&#x27;TF_CPP_MIN_LOG_LEVEL&#x27;</span>] = <span class="string">&#x27;3&#x27;</span></span><br></pre></td></tr></table></figure>
 <h1 id="example-1-output-of-perceptron-layer"><a class="markdownIt-Anchor" href="#example-1-output-of-perceptron-layer"></a> Example 1 Output of perceptron layer</h1>
 <p>A perceptron layer of 3 neurons shown in the figure receives 2-dimensional inputs <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><msup><mo stretchy="false">)</mo><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">(x_1, x_2)^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0913309999999998em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span>, and has a weight matrix <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">W</mi></mrow><annotation encoding="application/x-tex">\mathbf{W}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68611em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">W</span></span></span></span></span> and a bias vector <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">b</mi></mrow><annotation encoding="application/x-tex">\mathbf{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf">b</span></span></span></span></span> given by</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">W</mi><mo>=</mo><mrow><mo fence="true">(</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.133</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.072</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>0.155</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>0.001</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.062</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>0.072</mn></mrow></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{W} = \left(\begin{matrix}
@@ -736,6 +702,113 @@ loss:0.0028114152401259125</p>
 <p><img src="/figures/dl_tutorial3/3.4_1.png" alt="3.4.1" /></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">_, pred = model(X)</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line">plot_targets = plt.plot(Y[:,<span class="number">0</span>], Y[:,<span class="number">1</span>], <span class="string">&#x27;b^&#x27;</span>, label=<span class="string">&#x27;targets&#x27;</span>)</span><br><span class="line">plot_pred = plt.plot(pred[:,<span class="number">0</span>], pred[:,<span class="number">1</span>], <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;predicted&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$y_1$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y_2$&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;gd outputs&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/3.4_2.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/figures/dl_tutorial3/3.4_2.png" alt="3.4.2" /></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/Neuron-Layer-Tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Run">
+      <meta itemprop="description" content="This blog will record my thinking and learning notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LYTinn">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/05/Neuron-Layer-Tutorial/" class="post-title-link" itemprop="url">Neuron Layer Tutorial</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-09-05 21:04:55" itemprop="dateCreated datePublished" datetime="2022-09-05T21:04:55+08:00">2022-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-07 09:44:57" itemprop="dateModified" datetime="2022-09-07T09:44:57+08:00">2022-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><a href="#tutorial-q1">Tutorial Q1</a>
+<ul>
+<li><a href="#a">a</a>
+<ul>
+<li><a href="#solution">Solution</a></li>
+</ul>
+</li>
+<li><a href="#b">b</a>
+<ul>
+<li><a href="#solution-1">Solution</a></li>
+</ul>
+</li>
+<li><a href="#c">c</a>
+<ul>
+<li><a href="#solution-2">Solution</a></li>
+</ul>
+</li>
+<li><a href="#d">d</a>
+<ul>
+<li><a href="#solution-3">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tutorial-q2">Tutorial Q2</a>
+<ul>
+<li><a href="#solution-4">Solution</a></li>
+</ul>
+</li>
+<li><a href="#tutorial-q3">Tutorial Q3</a></li>
+</ul>
+<p>Import corresponding packages first:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(<span class="string">&#x27;figures&#x27;</span>):</span><br><span class="line">    os.makedirs(<span class="string">&#x27;figures&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">os.environ[<span class="string">&#x27;TF_CPP_MIN_LOG_LEVEL&#x27;</span>] = <span class="string">&#x27;3&#x27;</span></span><br></pre></td></tr></table></figure>
 <h1 id="tutorial-q1"><a class="markdownIt-Anchor" href="#tutorial-q1"></a> Tutorial Q1</h1>
 <p>Train a softmax layer of neurons to perform the following classification, given the inputs <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">x</mi><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x} = (x_1, x_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf">x</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> and target class labels <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span></span></span></span>:</p>
 <p><img src="/figures/dl_tutorial3/Q1.png" alt="Question 1" /></p>
@@ -743,7 +816,7 @@ loss:0.0028114152401259125</p>
 <p>Show on iteration of gradient descent learning at a learning factor 0.05. Initialize the weight to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo fence="true">(</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.88</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.08</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>0.34</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.68</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>0.39</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>0.19</mn></mrow></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow><annotation encoding="application/x-tex">\left(\begin{matrix}
     0.88&amp;0.08&amp;-0.34\\0.68&amp;-0.39&amp;-0.19
 \end{matrix}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mord">.</span><span class="mord">8</span><span class="mord">8</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mord">.</span><span class="mord">6</span><span class="mord">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">8</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">0</span><span class="mord">.</span><span class="mord">3</span><span class="mord">9</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">0</span><span class="mord">.</span><span class="mord">3</span><span class="mord">4</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">9</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span> and biases to zero.</p>
-<h3 id="solution-5"><a class="markdownIt-Anchor" href="#solution-5"></a> Solution</h3>
+<h3 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h3>
 <p>First import the libraries.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(<span class="string">&#x27;figures&#x27;</span>):</span><br><span class="line">    os.makedirs(<span class="string">&#x27;figures&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">os.environ[<span class="string">&#x27;TF_CPP_MIN_LOG_LEVEL&#x27;</span>] = <span class="string">&#x27;3&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>Set the parameters and prepare the data</p>
@@ -849,7 +922,7 @@ epoch:1900, loss:0.49352262405229586, error:0</p>
 </blockquote>
 <h2 id="b"><a class="markdownIt-Anchor" href="#b"></a> b</h2>
 <p>Find the weights and bias at the convergence of learning</p>
-<h3 id="solution-6"><a class="markdownIt-Anchor" href="#solution-6"></a> Solution</h3>
+<h3 id="solution-2"><a class="markdownIt-Anchor" href="#solution-2"></a> Solution</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;w: &#123;&#125;, b: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(model.w.numpy(), model.b.numpy()))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(p_))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(y_))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;entropy: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(l_))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;error: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(e_))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;loss:&#123;&#125;, error:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(loss_[-<span class="number">1</span>], err_[-<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>w: [[-0.12579118 -3.75032318  4.49611436]<br />
@@ -882,11 +955,11 @@ loss:0.4762838541742147, error:0</p>
 <img src="/figures/dl_tutorial3/t3q1_3.png" alt="t3q1_3" /></p>
 <h2 id="c"><a class="markdownIt-Anchor" href="#c"></a> c</h2>
 <p>Indicate the probabilities that the network predicts the classes of trained patterns</p>
-<h3 id="solution-7"><a class="markdownIt-Anchor" href="#solution-7"></a> Solution</h3>
+<h3 id="solution-3"><a class="markdownIt-Anchor" href="#solution-3"></a> Solution</h3>
 <p>The probabilities are displayed in the previous result, the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span> matrix.</p>
 <h2 id="d"><a class="markdownIt-Anchor" href="#d"></a> d</h2>
 <p>Plot the decision boundaries separating the three classes</p>
-<h3 id="solution-8"><a class="markdownIt-Anchor" href="#solution-8"></a> Solution</h3>
+<h3 id="solution-4"><a class="markdownIt-Anchor" href="#solution-4"></a> Solution</h3>
 <p>Find out the function of boundaries.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">w_, b_ = model.w.numpy(), model.b.numpy()</span><br><span class="line">ww, bb = np.zeros((<span class="number">3</span>, <span class="number">2</span>)), np.zeros(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    ww[i, :] = w_[:, i] - w_[:, (i+<span class="number">1</span>)%<span class="number">3</span>]</span><br><span class="line">    bb[i] = b_[i] - b_[(i+<span class="number">1</span>)%<span class="number">3</span>]</span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;ww: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(ww))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;bb: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(bb))</span><br><span class="line"></span><br><span class="line">m = -ww[:, <span class="number">0</span>]/ww[:, <span class="number">1</span>]</span><br><span class="line">c = -bb/ww[:, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;m: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(m))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;c: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(c))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compute_line</span>(<span class="params">x</span>):</span><br><span class="line">    y = np.zeros((<span class="number">3</span>, x.shape[<span class="number">0</span>]))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        y[i] = m[i]*x + c[i]</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line">xx = np.arange(-<span class="number">4.5</span>, <span class="number">4.5</span>, <span class="number">0.01</span>)</span><br><span class="line">yy = compute_line(xx)</span><br></pre></td></tr></table></figure>
 <p>Plot each boundary individually:</p>
@@ -903,6 +976,21 @@ loss:0.4762838541742147, error:0</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">8</span>)</span><br><span class="line">line = plt.subplot(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">line.plot(xx[yy[<span class="number">0</span>] &gt; yy[<span class="number">2</span>]], yy[<span class="number">0</span>, yy[<span class="number">0</span>] &gt; yy[<span class="number">2</span>]], color = <span class="string">&#x27;black&#x27;</span>, linestyle = <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">line.plot(xx[yy[<span class="number">1</span>] &lt; yy[<span class="number">2</span>]], yy[<span class="number">1</span>, yy[<span class="number">1</span>] &lt; yy[<span class="number">2</span>]], color = <span class="string">&#x27;black&#x27;</span>, linestyle = <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">line.plot(xx[yy[<span class="number">2</span>] &gt; yy[<span class="number">0</span>]], yy[<span class="number">2</span>, yy[<span class="number">2</span>] &gt; yy[<span class="number">0</span>]], color = <span class="string">&#x27;black&#x27;</span>, linestyle = <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">plot_pred = line.plot(X[Y==<span class="number">0</span>,<span class="number">0</span>], X[Y==<span class="number">0</span>,<span class="number">1</span>], <span class="string">&#x27;b^&#x27;</span>, label=<span class="string">&#x27;class A&#x27;</span>)</span><br><span class="line">plot_original = line.plot(X[Y==<span class="number">1</span>,<span class="number">0</span>], X[Y==<span class="number">1</span>,<span class="number">1</span>], <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;class B&#x27;</span>)</span><br><span class="line">plot_original = line.plot(X[Y==<span class="number">2</span>,<span class="number">0</span>], X[Y==<span class="number">2</span>,<span class="number">1</span>], <span class="string">&#x27;gx&#x27;</span>, label=<span class="string">&#x27;class C&#x27;</span>)</span><br><span class="line">ax = plt.gca()  <span class="comment"># gca stands for &#x27;get current axis&#x27;</span></span><br><span class="line">ax.spines[<span class="string">&#x27;right&#x27;</span>].set_color(<span class="string">&#x27;none&#x27;</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;top&#x27;</span>].set_color(<span class="string">&#x27;none&#x27;</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">&#x27;bottom&#x27;</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;bottom&#x27;</span>].set_position((<span class="string">&#x27;data&#x27;</span>,<span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;left&#x27;</span>].set_position((<span class="string">&#x27;data&#x27;</span>,<span class="number">0</span>))</span><br><span class="line">plt.ylim(-<span class="number">4.5</span>, <span class="number">4.5</span>)</span><br><span class="line">plt.xlim(xx.<span class="built_in">min</span>(), xx.<span class="built_in">max</span>())</span><br><span class="line">plt.text(<span class="number">4.3</span>, <span class="number">0.1</span>, <span class="string">r&#x27;$x_1$&#x27;</span>)</span><br><span class="line">plt.text(<span class="number">0.1</span>, <span class="number">4.3</span>, <span class="string">r&#x27;$x_2$&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/t3q1_8.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/figures/dl_tutorial3/t3q1_8.png" alt="t3q1_8" /></p>
 <h1 id="tutorial-q2"><a class="markdownIt-Anchor" href="#tutorial-q2"></a> Tutorial Q2</h1>
+<p>This tutorial question is exactly the same as <a href="#example-3-softmax-classification-of-iris-data">example 3</a>, but we will use the build-in function of tensorflow.</p>
+<h3 id="solution-5"><a class="markdownIt-Anchor" href="#solution-5"></a> Solution</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.optimizers <span class="keyword">import</span> SGD</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># set parameters</span></span><br><span class="line">no_epochs = <span class="number">1000</span></span><br><span class="line">batch_size = <span class="number">16</span></span><br><span class="line">lr = <span class="number">0.01</span></span><br><span class="line"></span><br><span class="line">tf.random.set_seed(<span class="number">10</span>)</span><br><span class="line">np.random.seed(<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># read the data</span></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">iris.data -= np.mean(iris.data, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(iris.data, </span><br><span class="line">                                                   iris.target,</span><br><span class="line">                                                   test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                   random_state=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># build the model</span></span><br><span class="line">model = Sequential([</span><br><span class="line">    Dense(<span class="number">3</span>, activation=<span class="string">&#x27;softmax&#x27;</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=SGD(learning_rate=lr),</span><br><span class="line">             loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>,</span><br><span class="line">             metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line"></span><br><span class="line">history = model.fit(x_train, y_train,</span><br><span class="line">    epochs=no_epochs,</span><br><span class="line">    batch_size = batch_size,</span><br><span class="line">    verbose=<span class="number">2</span>,</span><br><span class="line">    use_multiprocessing=<span class="literal">False</span>,</span><br><span class="line">    validation_data=(x_test, y_test))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;weights: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(model.layers[<span class="number">0</span>].get_weights()[<span class="number">0</span>]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;bias: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(model.layers[<span class="number">0</span>].get_weights()[<span class="number">1</span>]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;entropy = %2.3f, accuracy = %2.3f&#x27;</span>%(history.history[<span class="string">&#x27;val_loss&#x27;</span>][-<span class="number">1</span>], history.history[<span class="string">&#x27;val_accuracy&#x27;</span>][-<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>weights: [[ 0.08131782  1.0666023   0.42606768]<br />
+[ 1.3533359  -0.31473705  0.36418575]<br />
+[-3.1573186  -0.43541595  2.0120568 ]<br />
+[-0.81039417 -1.3970811   1.7261641 ]]<br />
+bias: [-0.78853196  2.226858   -1.4383247 ]<br />
+entropy = 0.112, accuracy = 0.967</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">1</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(no_epochs), history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epochs&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;cross-entropy&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/t3q2a_1.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(no_epochs), history.history[<span class="string">&#x27;val_accuracy&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epochs&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;classification accuracy&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;./figures/t3q2a_2.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/figures/dl_tutorial3/t3q2a_1.png" alt="t3q2a_1" /><br />
+<img src="/figures/dl_tutorial3/t3q2a_2.png" alt="t2q2a_2" /></p>
 <h1 id="tutorial-q3"><a class="markdownIt-Anchor" href="#tutorial-q3"></a> Tutorial Q3</h1>
 
       
@@ -1868,7 +1956,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1881,7 +1969,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

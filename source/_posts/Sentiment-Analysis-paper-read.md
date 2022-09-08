@@ -16,6 +16,10 @@ categories:
   - [Dataset](#dataset-1)
   - [Motivation](#motivation-1)
   - [Result](#result-1)
+- [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer](#ernie-doc-a-retrospective-long-document-modeling-transformer)
+  - [Dataset](#dataset-2)
+  - [Motivation](#motivation-2)
+  - [Result](#result-2)
 
 
 # Introduction
@@ -40,6 +44,18 @@ The [Unsupervised Data Augmentation for Consistency Training](https://arxiv.org/
 This dataset contains product reviews and metadata from Amazon, including 233.1 million reviews spanning May 1996 - Oct 2018.
 
 This dataset includes reviews (ratings, text, helpfulness votes), product metadata (descriptions, category information, price, brand, and image features), links (also viewed/also bought graphs), and transaction metadata for each review shown on the review page.
+## Motivation
+Substituting simple moising operations with davanced data augmentation methods, improves the performance on consistency training framework.
+
+**Consistency training** is used to enforce the predictions to be similar for an unlabeled example and the augmented unlabeled example
+
+## Result
+Finetuning from BERT, and yields improvements in high-data regime, such as ImageNet, whether when there is only 10% labeled data or when a full labeled set with 1.3M extra unlabeled examples is used.
+
+# ERNIE-Doc: A Retrospective Long-Document Modeling Transformer
+The ERNIE-Doc poblished on 2021 is the state-of-the-art in Sentiment Analysis on IMDb.
+## Dataset
+The **IMDb Movie Reviews** dataset is a binary sentiment analysis dataset consisting of 50,000 reviews from the Internet Movie Database (IMDb) labeled as positive or negative. The dataset contains an even number of positive and negative reviews. Only highly polarizing reviews are considered. A negative review has a score $\leq 4$ out of 10, and a positive review has a score $\geq 7$ out of 10. No more than 30 reviews are included per movie. The dataset contains additional unlabeled data.
 ## Motivation
 
 ## Result

@@ -16,10 +16,19 @@ categories:
   - [Dataset](#dataset-1)
   - [Motivation](#motivation-1)
   - [Result](#result-1)
-- [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer](#ernie-doc-a-retrospective-long-document-modeling-transformer)
+- [XLNet: Generalized Autoregressive Pretraining for Language Understanding](#xlnet-generalized-autoregressive-pretraining-for-language-understanding)
   - [Dataset](#dataset-2)
   - [Motivation](#motivation-2)
   - [Result](#result-2)
+- [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer](#ernie-doc-a-retrospective-long-document-modeling-transformer)
+  - [Dataset](#dataset-3)
+  - [Motivation](#motivation-3)
+  - [Result](#result-3)
+  - [Conclusion](#conclusion)
+- [MA_BERT: Learning Representation by Incorporating Multi-Attribute Knowledge in Transformers.](#ma_bert-learning-representation-by-incorporating-multi-attribute-knowledge-in-transformers)
+  - [Dataset](#dataset-4)
+  - [Motivation](#motivation-4)
+  - [Result](#result-4)
 
 
 # Introduction
@@ -52,10 +61,40 @@ Substituting simple moising operations with davanced data augmentation methods, 
 ## Result
 Finetuning from BERT, and yields improvements in high-data regime, such as ImageNet, whether when there is only 10% labeled data or when a full labeled set with 1.3M extra unlabeled examples is used.
 
-# ERNIE-Doc: A Retrospective Long-Document Modeling Transformer
-The ERNIE-Doc poblished on 2021 is the state-of-the-art in Sentiment Analysis on IMDb.
+# XLNet: Generalized Autoregressive Pretraining for Language Understanding
+The state-of-the-art model for Sentiment Analysis on IMDb.
+
 ## Dataset
 The **IMDb Movie Reviews** dataset is a binary sentiment analysis dataset consisting of 50,000 reviews from the Internet Movie Database (IMDb) labeled as positive or negative. The dataset contains an even number of positive and negative reviews. Only highly polarizing reviews are considered. A negative review has a score $\leq 4$ out of 10, and a positive review has a score $\geq 7$ out of 10. No more than 30 reviews are included per movie. The dataset contains additional unlabeled data.
 ## Motivation
+To overcome the defects of autoencoding model (like BERT).
+
+XLNet using autoregressive pretraining method that
+- enables learning bidirectional contexts by maximizing the expected likelihood over all permutations of the factorization order
+- overcomes the limitations of BERT which neglects dependency between the masked positions and suffers from a pretrain-finetune discrepancy.
+## Result
+Outperforms BERT on 20 tasks.
+
+# ERNIE-Doc: A Retrospective Long-Document Modeling Transformer
+An improvement to transformer architecture.
+## Dataset
+The **IMDb Movie Reviews** dataset is a binary sentiment analysis dataset consisting of 50,000 reviews from the Internet Movie Database (IMDb) labeled as positive or negative. The dataset contains an even number of positive and negative reviews. Only highly polarizing reviews are considered. A negative review has a score $\leq 4$ out of 10, and a positive review has a score $\geq 7$ out of 10. No more than 30 reviews are included per movie. The dataset contains additional unlabeled data.
+## Motivation
+Uing recurrence transformer to overcome the defect of transformer on long text.
+## Result
+Improved the state-of-th-art language modeling result of perplexity to 16.8 on WikiText-103. It also outperformed competitive pretraining models by a large margin on most language understanding tasks, such as text classification and question answering.
+## Conclusion
+Suitable to be innovations.
+
+# MA_BERT: Learning Representation by Incorporating Multi-Attribute Knowledge in Transformers.
+The state-of-the-art model for Sentiment Analysis on User and product information
+
+## Dataset
+The **IMDb Movie Reviews** dataset is a binary sentiment analysis dataset consisting of 50,000 reviews from the Internet Movie Database (IMDb) labeled as positive or negative. The dataset contains an even number of positive and negative reviews. Only highly polarizing reviews are considered. A negative review has a score $\leq 4$ out of 10, and a positive review has a score $\geq 7$ out of 10. No more than 30 reviews are included per movie. The dataset contains additional unlabeled data.
+
+## Motivation
+Incorporating attribute information from text.
+![MA-BERT](/figures/NLP/MA-BERT.png)
 
 ## Result
+Outperformed pre-trained BERT models and other methods incorporating external attribute knowledge.

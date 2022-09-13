@@ -17,6 +17,10 @@ categories:
     - [Markov Chains](#markov-chains)
     - [Hidden Markov Model](#hidden-markov-model)
     - [POS tagging with HMM](#pos-tagging-with-hmm)
+    - [HMM Decoding](#hmm-decoding)
+  - [The Viterbi algorithm](#the-viterbi-algorithm)
+    - [Example](#example)
+  - [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
 - [Named Entity Recognition](#named-entity-recognition)
 
 # POS and NER: Sequence Labeling
@@ -168,4 +172,65 @@ Applying the two assumptions of HMM, we can get:
 $$
 \hat{t}_{1:n} = \arg\max_{t_{1:n}}\prod_{i=1}^nP(w_i|t_i)P(t_i|t_{i-1})
 $$
+
+### HMM Decoding
+
+We have the two probabilities $p(t_i | t_{i-1})$ and $p(w_i|t_i)$. Given a sentence, for each word, we know which tag can generate this word, we now have a full picture of all possible tag sequences:
+![HMM Decoding](/figures/NLP/HMM%20Decoding.png)
+The tags in gray color cannot generate the words.
+
+We can find out that there are many possible tag sequences. How to choose which is the best one?
+
+## The Viterbi algorithm
+The Viterbi algorithm first sets up a **probability matrix** or lattice. One column for **each observation** $o_t$ (a word). One row for **each observation** $q_t$ (tag) in the state graph. Each cell of the lattice, $v_t(j)$, represents the probability that the HMM is in state $j$ **after seeing the first $t$ observations** and **passing through the most probable state sequence** $q_1, q_2, \dots, q_{t-1}$, given the HMM model parameters.
+
+Thus, from left to right, column by column, compute Viterbi path probability for each cell $v_t(j)$. Maintain a **backtrace** pointer for each cell, to indicate from which cell, the $v_t(j)$ is obtained. When $v_t(j)$'s for the last observation are computed, select the max value, and traceback the sequence.
+
+There is an [implementation](https://github.com/xiaoming-qxm/viterbi) in C++ that is quite good.
+
+### Example
+Run teh Viterbi algorithm with the HMM in the figure below to compute the most likely weather sequences for each of the two following observation sequences.
+- Sequence: 312312312
+- Sequence: 311233112
+
+![Tutorial 4 Q2](/figures/NLP/tut4Q2.png)
+> Solution
+
+For convenience, we won't implement the algorithm from scratch. Using hmmlearn package in python, we got the following:
+```python
+import numpy as np
+from hmmlearn import hmm
+
+states = ["-Hot-", "-Cold-"]
+#array index:  0,   1 
+
+observations = ["1", "2", "3"]
+#array index:   0, 1, 2
+
+model = hmm.MultinomialHMM(n_components=2)
+model.startprob_ = np.array([0.8, 0.2])
+model.transmat_ = np.array([[0.7, 0.3], 
+                            [0.4, 0.6]])
+model.emissionprob_ = np.array([[0.2, 0.4, 0.4], [0.5, 0.4, 0.1]])
+
+obs_sqn_1 = np.atleast_2d([2, 0, 1, 2, 0, 1, 2, 0, 1]).T
+#print(model.decode(obs_sqn_1))
+logprob, decode_states_1 = model.decode(obs_sqn_1, algorithm="viterbi")
+print ("Seq 1 decoded states: " + "".join(map(lambda x: states[x], decode_states_1)))
+
+obs_sqn_2 = np.atleast_2d([2, 0, 0, 1, 2, 2, 0, 0, 1]).T
+logprob, decode_states_2 = model.decode(obs_sqn_2, algorithm="viterbi")
+print ("Seq 2 decoded states: " + "".join(map(lambda x: states[x], decode_states_2)))
+
+input("Press Enter to continue...")
+```
+The output is
+```
+Seq 1 decoded states: -Hot--Hot--Hot--Hot--Hot--Hot--Hot--Hot--Hot-
+Seq 2 decoded states: -Hot--Cold--Cold--Hot--Hot--Hot--Cold--Cold--Cold-
+Press Enter to continue...
+```
+
+## Conditional Random Fields (CRFs)
+HMM is a useful and powerful model, but needs some augmentations. It is not straightforward to handle unknown words like proper names and acronyms. It is hard for generative models to add arbitrary features directly.
 # Named Entity Recognition

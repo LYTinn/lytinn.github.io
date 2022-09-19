@@ -238,6 +238,23 @@ HMM is a useful and powerful model, but needs some augmentations. It is not stra
 
 Given we have a sequence of input words $X = x_1, \dots, x_n$ and want to compute a sequence of output tags $Y=y_1, \dots, y_n$. In a CRF, we compute $p(Y|X)$ directly, training the CRF to discriminate among the possible tag sequences
 $$
-\hat{Y} = \argmax_{Y\in\mathcal{y}}
+\hat{Y} = \argmax_{Y\in\mathcal{y}} P(Y|X)
 $$
+
+A CRF is a log-linear model that assigns a probability to **an entire output**(tag) sequence $Y$, out of all possible seqences $y$, given **the entire input**(word) sequence $X$. It doesn't compute a probability for each tag at each time step. Instead, it computes log-linear functions over a set of relevant features at each step. These local features are aggregated and normalized to preduce a global probability for the whole sequence.
+
+In a CRF, the feature function $F$ maps an entire input sequence $X$ and an entire output sequence $Y$ to a feature vector.
+
+Assume we have $K$ features, with a weight $w_k$ for each feature $F_k$
+$$
+p(Y|X) = \frac{\exp\left(\sum_{k=1}^Kw_kF_k(X, Y)\right)}{\sum_{y'\in\mathcal{y}}\exp\left(\sum_{k=1}^Kw_kF_k(X, Y')\right)}
+$$
+
+These $K$ functions $F_k(X, Y)$ are known as global features; each one is a property of the entire input sequence $X$ and output sequence $Y$. $F_K(X, Y)$ is computed as a sum of local features for each position $i$ in $Y$. Each local feature $f_k$ in a **linear-chain CRF** usesL current output token $y_i$, the previous output token $y_{i-1}$, the entire input string $X$ (or any subpart of it), and the current position $i$.
+$$
+F_k(X, Y) = \sum_{i=1}^n f_k(y_{i-1}, y_i, X, i)
+$$
+
+A general (not linear-chain) CRF allows a feature to make use of any output token.
+
 # Named Entity Recognition

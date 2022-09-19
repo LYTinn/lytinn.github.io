@@ -232,5 +232,12 @@ Press Enter to continue...
 ```
 
 ## Conditional Random Fields (CRFs)
-HMM is a useful and powerful model, but needs some augmentations. It is not straightforward to handle unknown words like proper names and acronyms. It is hard for generative models to add arbitrary features directly.
+HMM is a useful and powerful model, but needs some augmentations. It is not straightforward to handle unknown words like proper names and acronyms. It is hard for generative models to add arbitrary features directly. For example, capitalization can be indicative for proper nouns, and words ending with "-ed" tend to be past tense (VBD or VBN)
+
+**CRF** is a **discriminative** sequence model based on log-linear models. We briefly describe the **linear chain CRF**.
+
+Given we have a sequence of input words $X = x_1, \dots, x_n$ and want to compute a sequence of output tags $Y=y_1, \dots, y_n$. In a CRF, we compute $p(Y|X)$ directly, training the CRF to discriminate among the possible tag sequences
+$$
+\hat{Y} = \argmax_{Y\in\mathcal{y}}
+$$
 # Named Entity Recognition

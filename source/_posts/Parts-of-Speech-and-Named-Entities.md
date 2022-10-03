@@ -21,7 +21,9 @@ categories:
   - [The Viterbi algorithm](#the-viterbi-algorithm)
     - [Example](#example)
   - [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
+    - [Features in a CRF POS Tagger](#features-in-a-crf-pos-tagger)
 - [Named Entity Recognition](#named-entity-recognition)
+    - [Features for NER for CRF models](#features-for-ner-for-crf-models)
 
 # POS and NER: Sequence Labeling
 ## Parts of speech (POS) 
@@ -257,4 +259,39 @@ $$
 
 A general (not linear-chain) CRF allows a feature to make use of any output token.
 
+### Features in a CRF POS Tagger
+In a  linear-chain CRF, each local feature $f_k$ at position $i$ can depend on any information from: $(y_{i-1}, y_i, X, i)$;
+
+For training and inference, there is always a fixed set of K features with K weights, even though the length of each sentence is different.
+
 # Named Entity Recognition
+Named entity is proper name for person, location, organization, etc. NEs are useful clues to sentence structure and meaning understanding. Knowing if a named entity like **Washington** is a name of a person, a placce, or a university is inportant to tasks like question answering and information extraction.
+
+**Named Entity Recognition**(NER) assigns words or phrases tags like PERSON, LOCATION, or ORGANIZATION.
+
+A named entity is roughly anything that can be referred to with **a proper name**: a person, a location, an organization; or a concept, a treatment; or date and time; or a brand, a product; depends on the domain.
+
+Differences between part-of-speech tagging and NER:
+- In POS tagging, each word gets one tag
+- In NER, we do not know the boundary of names, before we can label them
+
+Similarities between POS tagging and NER:
+- The same word may have different POS tags, like adg and adv for "Back"
+- The same text span may have different NE types, like Victoria, Washington
+- Both POS tagging and NER require surrounding words as context to make the tagging
+- Both POS tagging and NER work at sentence level
+
+A standard approach to sequence labeling for a **span-recognition problem** like NER is **BIO** tagging where "B" stands for begin, "I" stands for inside, and "O" stands for outside.
+
+There are a few variants: **IO**, **BIOES**(E for ending, S for single), **BIOEU**(U for unit)
+![sequence labeling for NER](/figures/NLP/Sequence%20labeling%20for%20NER.png)
+
+### Features for NER for CRF models
+- Identity of $w_i$ (or the word itself), identity of neighboring words
+- Embeddings for $w_i$, embeddings forneighboring words
+- Part of speech of $w_i$, part of speech of neighboring words
+- Presence of $w_i$ in a gazetteer
+- $w_i$ contains a particular prefix (from all prefixes of length $\leq 4$)
+- $w_i$ contains a particular suffix (from all suffixes of length $\leq 4$)
+- Word shape of $w_i$, word shape of neighboring words.
+- Short word shape of $w_i$, short word shape of neighboring words.

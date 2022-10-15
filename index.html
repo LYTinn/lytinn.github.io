@@ -187,6 +187,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/15/Deep-Learning-model-selection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Run">
+      <meta itemprop="description" content="This blog will record my thinking and learning notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LYTinn">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/15/Deep-Learning-model-selection/" class="post-title-link" itemprop="url">Deep Learning Topic selection</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-10-15 10:34:02 / Modified: 10:52:45" itemprop="dateCreated datePublished" datetime="2022-10-15T10:34:02+08:00">2022-10-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><a href="#deep-learning-model-selection">Deep Learning Model Selection</a>
+<ul>
+<li><a href="#a-speech-emotion-recognition">A. Speech Emotion Recognition</a></li>
+<li><a href="#b-text-emotion-recognition">B. Text Emotion Recognition</a></li>
+<li><a href="#c-sentiment-analysis">C. Sentiment Analysis</a></li>
+<li><a href="#d-gender-classification">D. Gender Classification</a></li>
+<li><a href="#e-material-recognition">E. Material Recognition</a></li>
+<li><a href="#f-flowers-recognition">F. Flowers Recognition</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="deep-learning-model-selection"><a class="markdownIt-Anchor" href="#deep-learning-model-selection"></a> Deep Learning Model Selection</h1>
+<h2 id="a-speech-emotion-recognition"><a class="markdownIt-Anchor" href="#a-speech-emotion-recognition"></a> A. Speech Emotion Recognition</h2>
+<p>Speech emotion recognition (SER) is the prediction of speaker’s emotions from speech signals. SER involves extraction of audio features from speech and classification of speaker utterances to emotional<br />
+classes. Interesting projects would be:</p>
+<ol>
+<li>To develop deep learning techniques for SER invariant to speaker characteristics such as gender, age emotion.</li>
+<li>To develop unsupervised learning techniques for SER</li>
+<li>To detect emotions dynamically in speech. That is, to predict emotions within subintervals of the speech utterance.</li>
+</ol>
+<h2 id="b-text-emotion-recognition"><a class="markdownIt-Anchor" href="#b-text-emotion-recognition"></a> B. Text Emotion Recognition</h2>
+<p>Text emotion recognition (TER) involves predicting emotions expressed in text and documents. Existing algorithms find emotion by learning the relationships of words using recurrent neural networks (RNN) or convolutional neural networks (CNN). RNN and CNN capture local information (i.e., emotion of words) and ignore the global information (i.e., emotion of sentence). Interesting projects would be</p>
+<ol>
+<li>To develop deep learning techniques for capture both local and global information. The local information refers to emotions expressed by words and global information refers to emotions expressed by the meanings of sentences.</li>
+<li>To develop techniques that are invariant to speaker’s writing styles and characteristics</li>
+</ol>
+<h2 id="c-sentiment-analysis"><a class="markdownIt-Anchor" href="#c-sentiment-analysis"></a> C. Sentiment Analysis</h2>
+<p>Text sentiment analysis (TSA) refers to identification of sentiments, usually positive or negative, expressed in text or document. One may want to develop deep learning techniques for TSA</p>
+<ol>
+<li>To deal with domain adaptation, that is, how can one adapt a network train on one domain to work in another domain</li>
+<li>To avoid using recurrent networks to speed up computations</li>
+<li>To deal with small datasets, that is, with insufficient number of training samples</li>
+</ol>
+<h2 id="d-gender-classification"><a class="markdownIt-Anchor" href="#d-gender-classification"></a> D. Gender Classification</h2>
+<p>Automatic gender classification has been used in many applications including image analysis on social platforms. The goal of this project is to classify the gender of faces in an image. One can design a convolutional neural network to achieve this goal. Some tasks to consider:</p>
+<ol>
+<li>Modify some previously published architectures e.g., increase the network depth, reducing their parameters, etc.</li>
+<li>Consider age and gender recognition simultaneously to take advantage of the gender-specific age characteristics and age-specific gender characteristics inherent to images</li>
+<li>Consider pre-training using the <a target="_blank" rel="noopener" href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA dataset</a></li>
+</ol>
+<h2 id="e-material-recognition"><a class="markdownIt-Anchor" href="#e-material-recognition"></a> E. Material Recognition</h2>
+<p>The goal of this project is to train a convolutional neural network to classify color photographs of surfaces into one of ten common material categories: fabric, foliage, glass, leather, metal, paper, plastic, stone, water, and wood. Some tasks to consider:</p>
+<ol>
+<li>Modify some previously published architectures e.g., increase the network depth, reducing their parameters, etc.</li>
+<li>Try data augmentation to increase the number of training images</li>
+<li>Try a larger dataset, Materials in Context Database (MINC)</li>
+</ol>
+<h2 id="f-flowers-recognition"><a class="markdownIt-Anchor" href="#f-flowers-recognition"></a> F. Flowers Recognition</h2>
+<p>The Oxford Flowers 102 dataset is a collection of 102 flower categories commonly occurring in the United Kingdom. Each class consists of between 40 and 258 images. The images have large scale, pose and light variations. In addition, there are categories that have large variations within the category and several very similar categories. The dataset is divided into a training set, a validation set and a test set. The training set and validation set each consist of 10 images per class (a total of 1020 images each). The test set consists of the remaining 6149 images (minimum 20 per class). Some tasks to consider:</p>
+<ol>
+<li>Modify some previously published architectures e.g., increase the network depth, reducing their parameters, etc.</li>
+<li>Analyze the results of using fewer training images, i.e., few-shot learning</li>
+<li>Try advanced techniques such as visual prompt tuning with a Transformer architecture</li>
+<li>Try more advanced loss function such as triplet loss</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/03/Sentiment-Analysis-model-selection/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -210,10 +333,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-10-03 10:47:17 / Modified: 11:09:55" itemprop="dateCreated datePublished" datetime="2022-10-03T10:47:17+08:00">2022-10-03</time>
+              <time title="Created: 2022-10-03 10:47:17" itemprop="dateCreated datePublished" datetime="2022-10-03T10:47:17+08:00">2022-10-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-04 10:05:54" itemprop="dateModified" datetime="2022-10-04T10:05:54+08:00">2022-10-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -238,17 +367,20 @@
           <ul>
 <li><a href="#sentiment-analysis----model-selection">Sentiment Analysis – model selection</a>
 <ul>
-<li><a href="#bert">BERT</a></li>
-<li><a href="#gpt3-not-free">GPT3 (not free)</a></li>
-<li><a href="#bloom">BLOOM</a></li>
+<li><a href="#using-pre-trained-model-to-build-a-demo">Using pre-trained model to build a demo</a></li>
+<li><a href="#fine-tuning-model">Fine-tuning model</a></li>
 </ul>
 </li>
 </ul>
 <h1 id="sentiment-analysis-model-selection"><a class="markdownIt-Anchor" href="#sentiment-analysis-model-selection"></a> Sentiment Analysis – model selection</h1>
 <p><img src="/figures/Sentiment_analysis/how-market-affected.png" alt="How market affected by news" /></p>
-<h2 id="bert"><a class="markdownIt-Anchor" href="#bert"></a> BERT</h2>
-<h2 id="gpt3-not-free"><a class="markdownIt-Anchor" href="#gpt3-not-free"></a> GPT3 (not free)</h2>
-<h2 id="bloom"><a class="markdownIt-Anchor" href="#bloom"></a> BLOOM</h2>
+<h2 id="using-pre-trained-model-to-build-a-demo"><a class="markdownIt-Anchor" href="#using-pre-trained-model-to-build-a-demo"></a> Using pre-trained model to build a demo</h2>
+<p>We can first build a demo for sentiment analysis using pre-trained model from HuggingFace. Follow this <a target="_blank" rel="noopener" href="https://huggingface.co/blog/sentiment-analysis-python">blog</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> pipeline</span><br><span class="line">sentiment_pipeline = pipeline(model=<span class="string">&quot;finiteautomata/bertweet-base-sentiment-analysis&quot;</span>)</span><br><span class="line">data = [<span class="string">&quot;I love you&quot;</span>, <span class="string">&quot;I hate you&quot;</span>]</span><br><span class="line">result = sentiment_pipeline(data)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<p>We can see that the result is</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&#x27;label&#x27;: &#x27;POS&#x27;, &#x27;score&#x27;: 0.9903131723403931&#125;, </span><br><span class="line">&#123;&#x27;label&#x27;: &#x27;NEG&#x27;, &#x27;score&#x27;: 0.9797351360321045&#125;]</span><br></pre></td></tr></table></figure>
+<h2 id="fine-tuning-model"><a class="markdownIt-Anchor" href="#fine-tuning-model"></a> Fine-tuning model</h2>
+<p>Using fine-tuning, I trained a <a target="_blank" rel="noopener" href="https://huggingface.co/LYTinn/finetuning-sentiment-model-3000-samples">model</a> with data from IMDB. The model is uploaded to hugging face.</p>
 
       
     </div>
@@ -2185,7 +2317,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -2198,7 +2330,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

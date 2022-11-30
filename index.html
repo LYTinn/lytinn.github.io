@@ -212,7 +212,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-11-30 12:54:19 / Modified: 12:56:37" itemprop="dateCreated datePublished" datetime="2022-11-30T12:54:19+08:00">2022-11-30</time>
+              <time title="Created: 2022-11-30 12:54:19 / Modified: 15:43:09" itemprop="dateCreated datePublished" datetime="2022-11-30T12:54:19+08:00">2022-11-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,14 +236,34 @@
 
       
           <ul>
-<li><a href="#centernet-reproduce">CenterNet reproduce</a>
+<li><a href="#centernet-reproduction">CenterNet reproduction</a>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#problems">Problems</a>
+<ul>
+<li><a href="#cuda-version">CUDA version</a></li>
+<li><a href="#cocoapi">COCOapi</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="centernet-reproduce"><a class="markdownIt-Anchor" href="#centernet-reproduce"></a> CenterNet reproduce</h1>
-<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+</li>
+</ul>
+<h1 id="centernet-reproduction"><a class="markdownIt-Anchor" href="#centernet-reproduction"></a> CenterNet reproduction</h1>
+<h2 id="problems"><a class="markdownIt-Anchor" href="#problems"></a> Problems</h2>
+<h3 id="cuda-version"><a class="markdownIt-Anchor" href="#cuda-version"></a> CUDA version</h3>
+<blockquote>
+<p>Because the Pytorch version used in this project is 0.4.1, which only support at most CUDA9.0 (current is 10.1 in our server), building the <code>DCNv2</code> directly, nvcc will generate a different dynamic library. When we run the code, this will lead to an import error.</p>
+</blockquote>
+<p>There are two possible ways to solve this: change the pytorch version or change the cuda version.</p>
+<p>The first solution seems safer. However, torch.utils.ffi is a dependency of the following steps and it is only provided in pytorch&lt;=0.4.1 so that we cannot change it.</p>
+<p>Thus, we choose the second solution, to install another cuda. To make sure all the processes are safe, we create a new docker with corresponding environment.</p>
+<h3 id="cocoapi"><a class="markdownIt-Anchor" href="#cocoapi"></a> COCOapi</h3>
+<blockquote>
+<p>When building the COCOapi, the <code>setup.py</code> will search for the latest matplotlib to install, which will be incompatible with the python3.6.</p>
+</blockquote>
+<p>To solve this problem, modify the <code>setup.py</code> in <code>/path/to/cocoapi/PythonAPI</code> from</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setup(</span><br><span class="line">    name=<span class="string">&#x27;pycocotools&#x27;</span>,</span><br><span class="line">    packages=[<span class="string">&#x27;pycocotools&#x27;</span>],</span><br><span class="line">    package_dir = &#123;<span class="string">&#x27;pycocotools&#x27;</span>: <span class="string">&#x27;pycocotools&#x27;</span>&#125;,</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">&#x27;setuptools&gt;=18.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cython&gt;=0.27.3&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;matplotlib&gt;=2.1.0&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    version=<span class="string">&#x27;2.0&#x27;</span>,</span><br><span class="line">    ext_modules= ext_modules</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>to</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setup(</span><br><span class="line">    name=<span class="string">&#x27;pycocotools&#x27;</span>,</span><br><span class="line">    packages=[<span class="string">&#x27;pycocotools&#x27;</span>],</span><br><span class="line">    package_dir = &#123;<span class="string">&#x27;pycocotools&#x27;</span>: <span class="string">&#x27;pycocotools&#x27;</span>&#125;,</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">&#x27;setuptools&gt;=18.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cython&gt;=0.27.3&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;matplotlib==2.1.0&#x27;</span> <span class="comment"># this line changed</span></span><br><span class="line">    ],</span><br><span class="line">    version=<span class="string">&#x27;2.0&#x27;</span>,</span><br><span class="line">    ext_modules= ext_modules</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
       
     </div>

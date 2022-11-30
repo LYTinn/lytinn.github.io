@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="CenterNet reproduce  Introduction     CenterNet reproduce  Introduction">
+  <meta name="description" content="CenterNet reproduction  Problems  CUDA version COCOapi       CenterNet reproduction  Problems  CUDA version  Because the Pytorch version used in this project is 0.4.1, which only support at most CUDA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CenterNet">
 <meta property="og:url" content="http://example.com/2022/11/30/CenterNet/index.html">
 <meta property="og:site_name" content="LYTinn">
-<meta property="og:description" content="CenterNet reproduce  Introduction     CenterNet reproduce  Introduction">
+<meta property="og:description" content="CenterNet reproduction  Problems  CUDA version COCOapi       CenterNet reproduction  Problems  CUDA version  Because the Pytorch version used in this project is 0.4.1, which only support at most CUDA">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-30T04:54:19.000Z">
-<meta property="article:modified_time" content="2022-11-30T04:56:37.551Z">
+<meta property="article:modified_time" content="2022-11-30T07:43:09.375Z">
 <meta property="article:author" content="Run">
 <meta property="article:tag" content="MLDA">
 <meta property="article:tag" content="Deep Learning">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-11-30 12:54:19 / Modified: 12:56:37" itemprop="dateCreated datePublished" datetime="2022-11-30T12:54:19+08:00">2022-11-30</time>
+              <time title="Created: 2022-11-30 12:54:19 / Modified: 15:43:09" itemprop="dateCreated datePublished" datetime="2022-11-30T12:54:19+08:00">2022-11-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,14 +241,34 @@
 
       
         <ul>
-<li><a href="#centernet-reproduce">CenterNet reproduce</a>
+<li><a href="#centernet-reproduction">CenterNet reproduction</a>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#problems">Problems</a>
+<ul>
+<li><a href="#cuda-version">CUDA version</a></li>
+<li><a href="#cocoapi">COCOapi</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="centernet-reproduce"><a class="markdownIt-Anchor" href="#centernet-reproduce"></a> CenterNet reproduce</h1>
-<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+</li>
+</ul>
+<h1 id="centernet-reproduction"><a class="markdownIt-Anchor" href="#centernet-reproduction"></a> CenterNet reproduction</h1>
+<h2 id="problems"><a class="markdownIt-Anchor" href="#problems"></a> Problems</h2>
+<h3 id="cuda-version"><a class="markdownIt-Anchor" href="#cuda-version"></a> CUDA version</h3>
+<blockquote>
+<p>Because the Pytorch version used in this project is 0.4.1, which only support at most CUDA9.0 (current is 10.1 in our server), building the <code>DCNv2</code> directly, nvcc will generate a different dynamic library. When we run the code, this will lead to an import error.</p>
+</blockquote>
+<p>There are two possible ways to solve this: change the pytorch version or change the cuda version.</p>
+<p>The first solution seems safer. However, torch.utils.ffi is a dependency of the following steps and it is only provided in pytorch&lt;=0.4.1 so that we cannot change it.</p>
+<p>Thus, we choose the second solution, to install another cuda. To make sure all the processes are safe, we create a new docker with corresponding environment.</p>
+<h3 id="cocoapi"><a class="markdownIt-Anchor" href="#cocoapi"></a> COCOapi</h3>
+<blockquote>
+<p>When building the COCOapi, the <code>setup.py</code> will search for the latest matplotlib to install, which will be incompatible with the python3.6.</p>
+</blockquote>
+<p>To solve this problem, modify the <code>setup.py</code> in <code>/path/to/cocoapi/PythonAPI</code> from</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setup(</span><br><span class="line">    name=<span class="string">&#x27;pycocotools&#x27;</span>,</span><br><span class="line">    packages=[<span class="string">&#x27;pycocotools&#x27;</span>],</span><br><span class="line">    package_dir = &#123;<span class="string">&#x27;pycocotools&#x27;</span>: <span class="string">&#x27;pycocotools&#x27;</span>&#125;,</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">&#x27;setuptools&gt;=18.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cython&gt;=0.27.3&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;matplotlib&gt;=2.1.0&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    version=<span class="string">&#x27;2.0&#x27;</span>,</span><br><span class="line">    ext_modules= ext_modules</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>to</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setup(</span><br><span class="line">    name=<span class="string">&#x27;pycocotools&#x27;</span>,</span><br><span class="line">    packages=[<span class="string">&#x27;pycocotools&#x27;</span>],</span><br><span class="line">    package_dir = &#123;<span class="string">&#x27;pycocotools&#x27;</span>: <span class="string">&#x27;pycocotools&#x27;</span>&#125;,</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">&#x27;setuptools&gt;=18.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cython&gt;=0.27.3&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;matplotlib==2.1.0&#x27;</span> <span class="comment"># this line changed</span></span><br><span class="line">    ],</span><br><span class="line">    version=<span class="string">&#x27;2.0&#x27;</span>,</span><br><span class="line">    ext_modules= ext_modules</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -332,7 +352,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#centernet-reproduce"><span class="nav-number">1.</span> <span class="nav-text"> CenterNet reproduce</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text"> Introduction</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#centernet-reproduction"><span class="nav-number">1.</span> <span class="nav-text"> CenterNet reproduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problems"><span class="nav-number">1.1.</span> <span class="nav-text"> Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cuda-version"><span class="nav-number">1.1.1.</span> <span class="nav-text"> CUDA version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cocoapi"><span class="nav-number">1.1.2.</span> <span class="nav-text"> COCOapi</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
